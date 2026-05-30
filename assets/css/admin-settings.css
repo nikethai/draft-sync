@@ -1,0 +1,736 @@
+/**
+ * Admin Settings Dashboard — WP-native light theme
+ * Enqueued on admin.php?page=gdtg-settings
+ */
+
+/* ── Layout ── */
+.gdtg-wrap {
+	max-width: none;
+	margin: 0;
+}
+
+.gdtg-header {
+	background: #fff;
+	border: 1px solid #c3c4c7;
+	border-radius: 4px;
+	padding: 20px 24px;
+	margin: 20px 0;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.gdtg-header h1 {
+	margin: 0 0 4px 0;
+	font-size: 20px;
+	font-weight: 600;
+}
+
+.gdtg-header p {
+	margin: 0;
+	color: #646970;
+	font-size: 13px;
+}
+
+.gdtg-version-badge {
+	background: #2271b1;
+	color: #fff;
+	padding: 2px 8px;
+	border-radius: 10px;
+	font-size: 11px;
+	font-weight: 600;
+	margin-left: 8px;
+	vertical-align: middle;
+}
+
+/* ── Connection status pill ── */
+.gdtg-status {
+	display: inline-block;
+	padding: 6px 14px;
+	border-radius: 4px;
+	font-size: 13px;
+	font-weight: 500;
+	white-space: nowrap;
+}
+
+.gdtg-status--connected {
+	background: #edfaef;
+	color: #0a6e2e;
+	border: 1px solid #b7e4c7;
+}
+
+.gdtg-status--disconnected {
+	background: #fef3f2;
+	color: #b91c1c;
+	border: 1px solid #fecaca;
+}
+
+/* ── Grid ── */
+.gdtg-grid {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr) 320px;
+	gap: 24px;
+	align-items: start;
+}
+
+@media (max-width: 1200px) {
+	.gdtg-grid {
+		grid-template-columns: 1fr;
+	}
+}
+
+/* ── Cards ── */
+.gdtg-card {
+	background: #fff;
+	border: 1px solid #c3c4c7;
+	border-radius: 4px;
+	padding: 24px;
+	margin-bottom: 0;
+}
+
+.gdtg-card + .gdtg-card {
+	margin-top: 16px;
+}
+
+.gdtg-card h2 {
+	margin: 0 0 16px 0;
+	font-size: 15px;
+	font-weight: 600;
+	padding-bottom: 12px;
+	border-bottom: 1px solid #dcdcde;
+}
+
+/* ── Tabs ── */
+.gdtg-nav-tabs {
+	margin-bottom: 20px;
+}
+
+.gdtg-nav-tabs .nav-tab {
+	cursor: pointer;
+}
+
+.gdtg-tab-panel {
+	display: none;
+}
+
+.gdtg-tab-panel.active {
+	display: block;
+}
+
+/* ── Form groups ── */
+.gdtg-form-row {
+	margin-bottom: 18px;
+}
+
+.gdtg-form-row label {
+	display: block;
+	font-weight: 600;
+	margin-bottom: 6px;
+	font-size: 13px;
+}
+
+.gdtg-form-row .description {
+	margin-top: 4px;
+	color: #646970;
+	font-size: 12px;
+}
+
+.gdtg-form-row input[type="text"],
+.gdtg-form-row input[type="password"],
+.gdtg-form-row input[type="number"] {
+	width: 100%;
+	max-width: 420px;
+}
+
+.gdtg-form-row select {
+	width: 100%;
+	max-width: 420px;
+}
+
+.gdtg-form-row input[type="text"][readonly] {
+	background: #f0f0f1;
+	cursor: default;
+}
+
+/* ── Connection mode cards ── */
+.gdtg-mode-switch {
+	display: flex;
+	gap: 16px;
+	margin-bottom: 20px;
+}
+
+.gdtg-mode-card {
+	flex: 1;
+	border: 2px solid #c3c4c7;
+	border-radius: 6px;
+	padding: 16px;
+	cursor: pointer;
+	background: #fff;
+	transition: border-color 0.15s;
+	position: relative;
+}
+
+.gdtg-mode-card:hover {
+	border-color: #2271b1;
+}
+
+.gdtg-mode-card.active {
+	border-color: #2271b1;
+	background: #f0f6fc;
+}
+
+.gdtg-mode-card input[type="radio"] {
+	position: absolute;
+	top: 16px;
+	right: 16px;
+}
+
+.gdtg-mode-card h3 {
+	margin: 0 0 4px 0;
+	font-size: 14px;
+}
+
+.gdtg-mode-card p {
+	margin: 0;
+	font-size: 12px;
+	color: #646970;
+}
+
+/* ── Section sub-heading ── */
+.gdtg-section-heading {
+	font-size: 14px;
+	font-weight: 600;
+	margin: 24px 0 14px 0;
+	padding-bottom: 8px;
+	border-bottom: 1px solid #dcdcde;
+}
+
+.gdtg-section-heading:first-child {
+	margin-top: 0;
+}
+
+/* ── Checkbox row ── */
+.gdtg-checkbox-row {
+	margin-bottom: 12px;
+}
+
+.gdtg-checkbox-row label {
+	display: flex !important;
+	align-items: flex-start;
+	gap: 8px;
+	cursor: pointer;
+	font-weight: 400;
+}
+
+.gdtg-checkbox-row label input[type="checkbox"] {
+	margin-top: 2px;
+	flex-shrink: 0;
+}
+
+.gdtg-checkbox-row .description {
+	margin-left: 24px;
+	margin-top: 2px;
+}
+
+/* ── License card accent ── */
+.gdtg-card--accent {
+	border-left: 4px solid #2271b1;
+}
+
+/* ── Save bar ── */
+.gdtg-save-bar {
+	margin-top: 20px;
+	padding-top: 16px;
+	border-top: 1px solid #dcdcde;
+	display: flex;
+	align-items: center;
+	gap: 12px;
+}
+
+/* ── Right sidebar cards ── */
+.gdtg-sidebar .gdtg-card {
+	background: #f9f9f9;
+}
+
+.gdtg-sidebar .gdtg-card ol {
+	margin-left: 18px;
+	font-size: 13px;
+	color: #50575e;
+	line-height: 1.6;
+}
+
+/* ── License status notice ── */
+.gdtg-license-notice {
+	padding: 10px 12px;
+	border-radius: 4px;
+	font-size: 12px;
+	margin-bottom: 12px;
+}
+
+.gdtg-license-notice--active {
+	background: #edfaef;
+	color: #0a6e2e;
+	border: 1px solid #b7e4c7;
+}
+
+.gdtg-license-notice--none {
+	background: #f0f0f1;
+	color: #646970;
+	border: 1px solid #dcdcde;
+}
+
+/* ── Imported Docs manager tables ── */
+.gdtg-imported-docs-section {
+	margin-bottom: 24px;
+}
+
+.gdtg-imported-docs-section h3 {
+	margin: 0 0 8px 0;
+	font-size: 14px;
+	font-weight: 600;
+}
+
+.gdtg-imported-docs-table {
+	margin-bottom: 8px;
+}
+
+.gdtg-imported-docs-table table {
+	margin: 0;
+}
+
+.gdtg-imported-docs-source-row {
+	cursor: default;
+}
+
+.gdtg-imported-docs-posts-row td {
+	background: #f9f9f9;
+}
+
+.gdtg-imported-docs-toggle {
+	min-width: 90px;
+	text-align: center;
+}
+
+.gdtg-imported-docs-resync {
+	min-width: 80px;
+}
+
+.gdtg-imported-docs-loading {
+	padding: 12px 0;
+	color: #646970;
+}
+
+.gdtg-imported-docs-error {
+	padding: 12px 0;
+	color: #b32d2e;
+}
+
+/* ── Imported Docs status badges ── */
+.gdtg-imported-docs-status-badge {
+	display: inline-block;
+	padding: 2px 8px;
+	border-radius: 10px;
+	font-size: 11px;
+	font-weight: 600;
+	text-transform: capitalize;
+	line-height: 1.6;
+	white-space: nowrap;
+	cursor: pointer;
+}
+
+.gdtg-imported-docs-status-badge--success {
+	background: #edfaef;
+	color: #0a6e2e;
+	border: 1px solid #b7e4c7;
+}
+
+.gdtg-imported-docs-status-badge--error {
+	background: #fef3f2;
+	color: #b91c1c;
+	border: 1px solid #fecaca;
+}
+
+.gdtg-imported-docs-status-badge--conflict {
+	background: #fef9e7;
+	color: #927238;
+	border: 1px solid #f9e79f;
+}
+
+.gdtg-imported-docs-status-badge--skipped,
+.gdtg-imported-docs-status-badge--skipped_unchanged,
+.gdtg-imported-docs-status-badge--skipped_locked {
+	background: #f0f0f1;
+	color: #646970;
+	border: 1px solid #dcdcde;
+}
+
+.gdtg-imported-docs-status-badge--deferred_size {
+	background: #e8f4fd;
+	color: #135e96;
+	border: 1px solid #b8dff5;
+}
+
+.gdtg-imported-docs-status-badge--locked {
+	background: #f3e8fd;
+	color: #6b21a8;
+	border: 1px solid #d8b4fe;
+}
+
+.gdtg-imported-docs-status-badge--unknown {
+	background: #f0f0f1;
+	color: #646970;
+	border: 1px solid #dcdcde;
+}
+
+/* ── Imported Docs events panel ── */
+.gdtg-imported-docs-events td {
+	padding: 0 !important;
+	background: #fcfcfc;
+}
+
+.gdtg-imported-docs-events-cell {
+	padding: 8px 16px !important;
+	border-top: 2px solid #2271b1;
+}
+
+.gdtg-events-list {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.gdtg-event-item {
+	padding: 4px 0;
+	font-size: 12px;
+	line-height: 1.5;
+	border-bottom: 1px solid #f0f0f1;
+}
+
+.gdtg-event-item:last-child {
+	border-bottom: none;
+}
+
+.gdtg-event-level {
+	display: inline-block;
+	padding: 0 4px;
+	border-radius: 3px;
+	font-size: 10px;
+	font-weight: 600;
+	text-transform: uppercase;
+	margin-right: 6px;
+}
+
+.gdtg-event-level--info {
+	background: #e8f4fd;
+	color: #135e96;
+}
+
+.gdtg-event-level--warning {
+	background: #fef9e7;
+	color: #927238;
+}
+
+.gdtg-event-level--error {
+	background: #fef3f2;
+	color: #b91c1c;
+}
+
+.gdtg-event-time {
+	color: #8c8f94;
+	font-size: 11px;
+	margin-left: 8px;
+}
+
+/* ── Import form ── */
+.gdtg-import-form {
+	margin-bottom: 8px;
+
+.gdtg-import-mode-tabs {
+	margin-bottom: 16px;
+	display: flex;
+	gap: 0;
+}
+
+.gdtg-import-mode-tab {
+	padding: 6px 16px;
+	background: #f0f0f1;
+	border: 1px solid #c3c4c7;
+	border-bottom: none;
+	border-radius: 4px 4px 0 0;
+	cursor: pointer;
+	font-size: 13px;
+	font-weight: 500;
+	color: #50575e;
+}
+
+.gdtg-import-mode-tab + .gdtg-import-mode-tab {
+	margin-left: -1px;
+}
+
+.gdtg-import-mode-tab.active {
+	background: #fff;
+	color: #1d2327;
+	border-bottom-color: #fff;
+}
+
+.gdtg-import-section {
+	border: 1px solid #c3c4c7;
+	border-top: none;
+	background: #fff;
+	padding: 16px;
+	margin-bottom: 16px;
+}
+
+.gdtg-import-docx-name {
+	margin-top: 6px;
+	font-size: 12px;
+	color: #646970;
+}
+
+.gdtg-import-docx-name--selected {
+	color: #0a6e2e;
+	font-weight: 500;
+}
+
+.gdtg-import-form .gdtg-form-row {
+	margin-bottom: 12px;
+}
+
+.gdtg-import-form .gdtg-form-row label {
+	font-weight: 600;
+	margin-bottom: 4px;
+}
+
+.gdtg-import-form .gdtg-form-row input[type="text"] {
+	width: 100%;
+	max-width: 540px;
+}
+
+.gdtg-import-form .gdtg-form-row select {
+	width: auto;
+	min-width: 180px;
+}
+
+.gdtg-import-options {
+	margin-bottom: 12px;
+	border-top: 1px solid #dcdcde;
+	padding-top: 12px;
+}
+
+/* ── Import options group label ── */
+.gdtg-import-options-label {
+	font-size: 11px;
+	font-weight: 600;
+	text-transform: uppercase;
+	color: #50575e;
+	margin: 0 0 8px 0;
+	letter-spacing: 0.3px;
+}
+
+/* ── Admin import destructive wrapper (layout only, tone from gdtg-caution-zone) ── */
+.gdtg-import-destructive {
+	margin-top: 10px;
+	padding-top: 12px;
+}
+
+.gdtg-import-actions {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+}
+
+.gdtg-import-result {
+	font-size: 13px;
+}
+
+.gdtg-import-result--success {
+	color: #0a6e2e;
+}
+
+.gdtg-import-result--error {
+	color: #b32d2e;
+}
+
+.gdtg-import-file-input {
+	display: none;
+}
+
+.gdtg-import-file-button {
+	margin-top: 6px;
+}
+
+
+/* ── Help tab ── */
+.gdtg-help-toc {
+	background: #f0f0f1;
+	border: 1px solid #c3c4c7;
+	border-radius: 4px;
+	padding: 16px 24px;
+	margin-bottom: 24px;
+}
+
+.gdtg-help-toc h3 {
+	margin: 0 0 8px;
+	font-size: 14px;
+	font-weight: 600;
+}
+
+.gdtg-help-toc ol {
+	margin: 0;
+	padding-left: 20px;
+	columns: 2;
+	column-gap: 24px;
+}
+
+.gdtg-help-toc li {
+	margin-bottom: 4px;
+}
+
+.gdtg-help-toc a {
+	text-decoration: none;
+	color: #2271b1;
+	font-size: 13px;
+}
+
+.gdtg-help-toc a:hover {
+	text-decoration: underline;
+}
+
+.gdtg-help-section {
+	margin-bottom: 32px;
+	padding-bottom: 24px;
+	border-bottom: 1px solid #dcdcde;
+}
+
+.gdtg-help-section:last-child {
+	margin-bottom: 0;
+	padding-bottom: 0;
+	border-bottom: none;
+}
+
+.gdtg-help-section h3 {
+	font-size: 16px;
+	font-weight: 600;
+	margin: 0 0 12px;
+	color: #1d2327;
+}
+
+.gdtg-help-section h4 {
+	font-size: 13px;
+	font-weight: 600;
+	margin: 16px 0 8px;
+	color: #1d2327;
+}
+
+.gdtg-help-section p,
+.gdtg-help-section li {
+	font-size: 13px;
+	line-height: 1.6;
+	color: #50575e;
+}
+
+.gdtg-help-section pre {
+	background: #f6f7f7;
+	border: 1px solid #dcdcde;
+	border-radius: 4px;
+	padding: 12px 16px;
+	overflow-x: auto;
+	font-size: 12px;
+	line-height: 1.5;
+}
+
+.gdtg-help-section code {
+	font-size: 12px;
+	background: #f6f7f7;
+	padding: 1px 4px;
+	border-radius: 3px;
+}
+
+.gdtg-help-section pre code {
+	background: none;
+	padding: 0;
+}
+
+.gdtg-help-section table {
+	margin: 8px 0 16px;
+}
+
+.gdtg-help-section table th {
+	font-size: 12px;
+	font-weight: 600;
+}
+
+.gdtg-help-section table td {
+	font-size: 13px;
+}
+
+/* ── Enterprise Setup Guidance ── */
+.gdtg-card--enterprise-guide {
+	border-left: 4px solid #2271b1;
+}
+
+.gdtg-card--enterprise-guide h3 {
+	margin-bottom: 10px;
+}
+
+.gdtg-card--enterprise-guide p {
+	margin: 0 0 12px 0;
+	font-size: 13px;
+	color: #50575e;
+	line-height: 1.5;
+}
+
+.gdtg-enterprise-steps {
+	margin: 0 0 8px 18px;
+	padding: 0;
+	font-size: 13px;
+	color: #1d2327;
+	line-height: 1.8;
+}
+
+.gdtg-enterprise-steps li {
+	margin-bottom: 2px;
+}
+
+/* ── Redirect URI copy row ── */
+.gdtg-copy-row {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+}
+
+.gdtg-copy-row input[type="text"] {
+	flex: 1;
+	max-width: 420px;
+}
+
+.gdtg-copy-row .button {
+	flex-shrink: 0;
+}
+
+/* ── JSON import row ── */
+.gdtg-json-import-row {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+}
+
+.gdtg-json-import-row input[type="file"] {
+	flex: 1;
+	max-width: 300px;
+	font-size: 13px;
+}
+
+.gdtg-json-import-row .button {
+	flex-shrink: 0;
+}
+
+.gdtg-json-import-status--error {
+	color: #b32d2e !important;
+	font-weight: 500;
+}
+
+.gdtg-json-import-status--success {
+	color: #0a6e2e !important;
+	font-weight: 500;
+}

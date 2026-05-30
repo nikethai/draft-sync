@@ -1,0 +1,335 @@
+/*
+ * DraftSync sidebar — workflow layout and restrained visual polish.
+ * Stays scoped to plugin classes; avoids fighting Gutenberg components globally.
+ */
+/* ── Source flow section ── */
+.gdtg-sidebar-flow-section > .components-base-control,
+.gdtg-sidebar-flow-section > .components-radio-control,
+.gdtg-sidebar-flow-section > .components-select-control,
+.gdtg-sidebar-flow-section .gdtg-sidebar-filepicker-card,
+.gdtg-sidebar-flow-section .gdtg-sidebar-bulk-panel {
+  margin-bottom: 14px;
+}
+.gdtg-sidebar-flow-section > :last-child {
+  margin-bottom: 0;
+}
+/* Source mode spacing */
+.gdtg-sidebar-mode {
+  margin-bottom: 16px;
+}
+.gdtg-sidebar-mode .components-base-control__field {
+  margin-bottom: 0;
+}
+/* ── Filepicker card (hidden input + visible button + selected-file state) ── */
+.gdtg-sidebar-filepicker-card {
+  margin-bottom: 0;
+  padding: 10px;
+  border: 1px dashed #c3c4c7;
+  border-radius: 4px;
+  background: #fcfcfc;
+  transition: border-color 0.15s ease, background-color 0.15s ease;
+}
+.gdtg-sidebar-filepicker-card.is-drag-over {
+  border-color: #3858e9;
+  background: #f0f6fc;
+}
+.gdtg-sidebar-file-input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+.gdtg-sidebar-file-button {
+  width: 100%;
+  justify-content: center;
+  margin-bottom: 8px;
+}
+.gdtg-sidebar-drop-hint {
+  margin: 0 0 8px 0;
+  font-size: 12px;
+  color: #50575e;
+}
+.gdtg-sidebar-file-state {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 8px 10px;
+  border: 1px solid #dcdcde;
+  border-radius: 4px;
+  background: #fff;
+  font-size: 12px;
+  line-height: 1.4;
+  color: #50575e;
+  min-width: 0;
+}
+.gdtg-sidebar-file-state .gdtg-sidebar-file-icon-slot {
+  flex-shrink: 0;
+  font-size: 14px;
+  line-height: 1;
+}
+.gdtg-sidebar-file-state .gdtg-sidebar-file-name {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+/* ── Action zone ── */
+.gdtg-sidebar-action-zone {
+  margin-top: 4px;
+}
+.gdtg-sidebar-primary-action {
+  width: 100%;
+  justify-content: center;
+  margin-bottom: 8px;
+}
+.gdtg-sidebar-status-text {
+  font-size: 12px;
+  font-style: italic;
+  color: #757575;
+  margin: 0 0 8px 0;
+}
+.gdtg-sidebar-action-zone .components-notice {
+  margin-bottom: 8px;
+}
+/* ── Import options ── */
+.gdtg-sidebar-options-group {
+  margin-bottom: 4px;
+}
+.gdtg-sidebar-options-group .components-base-control,
+.gdtg-sidebar-options-group .components-toggle-control {
+  margin-bottom: 12px;
+}
+.gdtg-sidebar-options-group .components-base-control:last-child,
+.gdtg-sidebar-options-group .components-toggle-control:last-child {
+  margin-bottom: 0;
+}
+/* Nested toggle indent */
+.gdtg-nested-toggle {
+  padding-left: 16px;
+}
+/* ── Destructive option (layout only, tone from gdtg-caution-zone) ── */
+.gdtg-sidebar-destructive-option {
+  margin-top: 10px;
+  padding-top: 12px;
+  border-top: 1px solid #dcdcde;
+}
+.gdtg-sidebar-destructive-option .components-toggle-control {
+  margin-bottom: 0;
+}
+/* ── Secondary actions (re-sync panel, etc.) ── */
+.gdtg-sidebar-secondary-action {
+  width: 100%;
+  justify-content: center;
+}
+.gdtg-sidebar-secondary-action + .gdtg-sidebar-secondary-action {
+  margin-top: 8px;
+}
+.gdtg-sidebar-resync-force {
+  margin-top: 8px;
+}
+/* ── Hide the "Unpin from toolbar" star button ── */
+#gdtg-google-docs-sync\:gdtg-sidebar
+  .interface-complementary-area__pin-unpin-item {
+  display: none;
+}
+/* Keep the close button visible but remove its left margin from the hidden star */
+#gdtg-google-docs-sync\:gdtg-sidebar .components-panel__header {
+  justify-content: flex-end;
+}
+
+/* ── Bulk import ── */
+.gdtg-sidebar-bulk-panel {
+  display: grid;
+  gap: 12px;
+}
+.gdtg-sidebar-bulk-row {
+  padding: 10px;
+  border: 1px solid #dcdcde;
+  border-radius: 4px;
+  background: #fff;
+}
+.gdtg-sidebar-bulk-row .components-base-control {
+  margin-bottom: 10px;
+}
+.gdtg-sidebar-bulk-row .components-base-control:last-child {
+  margin-bottom: 0;
+}
+.gdtg-sidebar-bulk-results {
+  margin-top: 8px;
+  max-height: 160px;
+  overflow-y: auto;
+}
+.gdtg-sidebar-bulk-error {
+  font-size: 11px;
+  color: #b32d2e;
+  margin: 0 0 4px 0;
+  line-height: 1.4;
+}
+/* ── Source status ── */
+.gdtg-sidebar-source-status {
+  margin-bottom: 12px;
+}
+.gdtg-sidebar-source-info {
+  font-size: 12px;
+  color: #50575e;
+  margin: 0 0 8px 0;
+}
+
+/* ── Google Picker (Phase 2) ── */
+.gdtg-picker-row {
+	margin-bottom: 8px;
+}
+.gdtg-picker-button {
+	width: 100%;
+	justify-content: center;
+}
+.gdtg-picker-chip {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	margin-top: 4px;
+	padding: 4px 8px;
+	border: 1px solid #dcdcde;
+	border-radius: 4px;
+	background: #f0f6fc;
+	font-size: 12px;
+	line-height: 1.4;
+	color: #1e1e1e;
+}
+.gdtg-picker-chip__name {
+	max-width: 200px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+.gdtg-picker-chip__clear {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 18px;
+	height: 18px;
+	padding: 0;
+	border: none;
+	border-radius: 50%;
+	background: #c3c4c7;
+	color: #fff;
+	font-size: 13px;
+	line-height: 1;
+	cursor: pointer;
+	flex-shrink: 0;
+}
+.gdtg-picker-chip__clear:hover {
+	background: #b32d2e;
+}
+
+/* ── Sidebar status badge (Phase 3) ── */
+.gdtg-sidebar-status-badge {
+	display: inline-block;
+	padding: 1px 7px;
+	border-radius: 10px;
+	font-size: 11px;
+	font-weight: 600;
+	text-transform: capitalize;
+	line-height: 1.6;
+}
+
+.gdtg-sidebar-status-badge--success {
+	background: #edfaef;
+	color: #0a6e2e;
+	border: 1px solid #b7e4c7;
+}
+
+.gdtg-sidebar-status-badge--error {
+	background: #fef3f2;
+	color: #b91c1c;
+	border: 1px solid #fecaca;
+}
+
+.gdtg-sidebar-status-badge--conflict {
+	background: #fef9e7;
+	color: #927238;
+	border: 1px solid #f9e79f;
+}
+
+.gdtg-sidebar-status-badge--skipped,
+.gdtg-sidebar-status-badge--skipped_unchanged,
+.gdtg-sidebar-status-badge--skipped_locked {
+	background: #f0f0f1;
+	color: #646970;
+	border: 1px solid #dcdcde;
+}
+
+.gdtg-sidebar-status-badge--deferred_size {
+	background: #e8f4fd;
+	color: #135e96;
+	border: 1px solid #b8dff5;
+}
+
+.gdtg-sidebar-status-badge--locked {
+	background: #f3e8fd;
+	color: #6b21a8;
+	border: 1px solid #d8b4fe;
+}
+
+.gdtg-sidebar-status-badge--unknown {
+	background: #f0f0f1;
+	color: #646970;
+	border: 1px solid #dcdcde;
+}
+
+/* ── Sidebar events toggle ── */
+.gdtg-sidebar-events-toggle {
+	margin-top: 8px;
+}
+
+.gdtg-sidebar-events-list {
+	margin: 8px 0 0 0;
+	padding: 0;
+	list-style: none;
+}
+
+.gdtg-sidebar-event-item {
+	padding: 3px 0;
+	font-size: 11px;
+	line-height: 1.5;
+	border-bottom: 1px solid #f0f0f1;
+	color: #50575e;
+}
+
+.gdtg-sidebar-event-item:last-child {
+	border-bottom: none;
+}
+
+.gdtg-sidebar-event-level {
+	display: inline-block;
+	padding: 0 3px;
+	border-radius: 3px;
+	font-size: 9px;
+	font-weight: 600;
+	text-transform: uppercase;
+	margin-right: 4px;
+}
+
+.gdtg-sidebar-event-level--info {
+	background: #e8f4fd;
+	color: #135e96;
+}
+
+.gdtg-sidebar-event-level--warning {
+	background: #fef9e7;
+	color: #927238;
+}
+
+.gdtg-sidebar-event-level--error {
+	background: #fef3f2;
+	color: #b91c1c;
+}
+
+.gdtg-sidebar-event-time {
+	color: #8c8f94;
+	font-size: 10px;
+	margin-left: 8px;
+}

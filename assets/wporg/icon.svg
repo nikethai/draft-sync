@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-label="DraftSync icon">
+  <title>DraftSync</title>
+  <desc>Stylized DS monogram in deep indigo and mint green on a transparent background.</desc>
+
+  <!-- Background tile (rounded square) -->
+  <rect x="0" y="0" width="256" height="256" rx="48" ry="48" fill="#1a1f4d"/>
+
+  <!-- Document silhouette: a rounded rectangle with a folded top-right corner. -->
+  <g transform="translate(40, 36)">
+    <path d="M0 12
+             Q0 0 12 0
+             L132 0
+             L176 44
+             L176 168
+             Q176 180 164 180
+             L12 180
+             Q0 180 0 168
+             Z"
+          fill="#2a3170"/>
+
+    <!-- Folded corner triangle -->
+    <path d="M132 0 L176 44 L132 44 Z" fill="#3a4188"/>
+
+    <!-- Folded corner crease line -->
+    <path d="M132 0 L132 44 L176 44" fill="none" stroke="#1a1f4d" stroke-width="3" stroke-linejoin="round"/>
+
+    <!-- Three doc lines -->
+    <rect x="22" y="68" width="120" height="8" rx="3" fill="#7CFFB2" opacity="0.85"/>
+    <rect x="22" y="92" width="120" height="8" rx="3" fill="#7CFFB2" opacity="0.65"/>
+    <rect x="22" y="116" width="86" height="8" rx="3" fill="#7CFFB2" opacity="0.45"/>
+  </g>
+
+  <!-- Stylized S overlaid as a sync arrow -->
+  <g transform="translate(112, 100)" fill="#7CFFB2">
+    <!-- Top arc of the S -->
+    <path d="M0 24
+             Q0 0 24 0
+             L36 0
+             Q60 0 60 24
+             L60 28
+             L48 28
+             L48 24
+             Q48 12 36 12
+             L24 12
+             Q12 12 12 24
+             Q12 32 24 36
+             L40 42
+             Q60 50 60 64
+             Q60 88 36 88
+             L24 88
+             Q0 88 0 64
+             L0 60
+             L12 60
+             L12 64
+             Q12 76 24 76
+             L36 76
+             Q48 76 48 64
+             Q48 56 36 52
+             L20 46
+             Q0 38 0 24 Z"/>
+  </g>
+
+  <!-- Sync arrow tips to suggest two-way motion -->
+  <g fill="#7CFFB2">
+    <polygon points="200,96 184,90 192,108"/>
+    <polygon points="200,200 184,206 192,188"/>
+  </g>
+</svg>

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1544 500" width="1544" height="500" role="img" aria-label="DraftSync plugin banner">
+  <title>DraftSync</title>
+  <desc>Plugin directory banner with the DS monogram icon on the left and the DraftSync wordmark on the right.</desc>
+
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%"  stop-color="#1a1f4d"/>
+      <stop offset="100%" stop-color="#2a3170"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%"  stop-color="#7CFFB2"/>
+      <stop offset="100%" stop-color="#5ae2ff"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect x="0" y="0" width="1544" height="500" rx="0" fill="url(#bg)"/>
+
+  <!-- Decorative sync loop on the right -->
+  <g transform="translate(1180, 80)" fill="none" stroke="url(#accent)" stroke-width="6" opacity="0.35">
+    <path d="M0 170
+             A170 170 0 0 1 340 170
+             A170 170 0 0 1 0 170 Z"
+          stroke-dasharray="6 12"/>
+  </g>
+  <g transform="translate(1240, 80)" fill="none" stroke="url(#accent)" stroke-width="3" opacity="0.5">
+    <path d="M0 170
+             A110 110 0 0 1 220 170
+             A110 110 0 0 1 0 170 Z"
+          stroke-dasharray="3 8"/>
+  </g>
+
+  <!-- Icon (compact monogram in a tile) -->
+  <g transform="translate(80, 90)">
+    <rect x="0" y="0" width="320" height="320" rx="60" fill="#10153a"/>
+    <g transform="translate(50, 45)">
+      <!-- Document silhouette -->
+      <path d="M0 12 Q0 0 12 0 L165 0 L220 55 L220 210 Q220 225 205 225 L15 225 Q0 225 0 210 Z" fill="#2a3170"/>
+      <path d="M165 0 L220 55 L165 55 Z" fill="#3a4188"/>
+      <path d="M165 0 L165 55 L220 55" fill="none" stroke="#10153a" stroke-width="4" stroke-linejoin="round"/>
+      <!-- Doc lines -->
+      <rect x="28" y="85" width="150" height="10" rx="4" fill="#7CFFB2" opacity="0.85"/>
+      <rect x="28" y="115" width="150" height="10" rx="4" fill="#7CFFB2" opacity="0.65"/>
+      <rect x="28" y="145" width="108" height="10" rx="4" fill="#7CFFB2" opacity="0.45"/>
+    </g>
+    <!-- S overlay -->
+    <g transform="translate(140, 125)" fill="#7CFFB2">
+      <path d="M0 30
+               Q0 0 30 0
+               L45 0
+               Q75 0 75 30
+               L75 35
+               L60 35
+               L60 30
+               Q60 15 45 15
+               L30 15
+               Q15 15 15 30
+               Q15 40 30 45
+               L50 53
+               Q75 63 75 80
+               Q75 110 45 110
+               L30 110
+               Q0 110 0 80
+               L0 75
+               L15 75
+               L15 80
+               Q15 95 30 95
+               L45 95
+               Q60 95 60 80
+               Q60 70 45 65
+               L25 58
+               Q0 48 0 30 Z"/>
+    </g>
+  </g>
+
+  <!-- Wordmark -->
+  <g transform="translate(460, 0)">
+    <text x="0" y="240" font-family="Inter, -apple-system, 'Segoe UI', system-ui, sans-serif" font-size="148" font-weight="800" fill="#FFFFFF" letter-spacing="-3">DraftSync</text>
+    <text x="4" y="305" font-family="Inter, -apple-system, 'Segoe UI', system-ui, sans-serif" font-size="38" font-weight="500" fill="#7CFFB2" letter-spacing="0.5">Google Docs → Gutenberg</text>
+    <text x="4" y="350" font-family="Inter, -apple-system, 'Segoe UI', system-ui, sans-serif" font-size="24" font-weight="400" fill="#aab0d6" letter-spacing="0.4">Import Google Docs and .docx files as native, editable Gutenberg blocks.</text>
+  </g>
+
+  <!-- Accent corner -->
+  <rect x="0" y="0" width="12" height="500" fill="url(#accent)"/>
+</svg>

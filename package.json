@@ -1,0 +1,28 @@
+{
+	"name": "draftsync",
+	"version": "1.0.0",
+	"description": "WordPress plugin to import Google Docs directly into native Gutenberg blocks.",
+	"main": "build/index.js",
+	"scripts": {
+		"start": "wp-scripts start",
+		"build": "wp-scripts build",
+		"format": "wp-scripts format",
+		"lint:js": "wp-scripts lint-js",
+		"packages-update": "wp-scripts packages-update"
+	},
+	"keywords": [
+		"wordpress",
+		"gutenberg",
+		"google-docs",
+		"import",
+		"saas"
+	],
+	"author": "TT",
+	"license": "GPL-2.0-or-later",
+	"devDependencies": {
+		"@resvg/resvg-js": "^2.6.2",
+		"@wordpress/scripts": "^27.0.0",
+		"docx": "^9.7.1"
+	},
+	"packageManager": "pnpm@8.14.2+sha1.1670a65b60df5f95e9f0cb7de46e605d9bd74fda"
+}

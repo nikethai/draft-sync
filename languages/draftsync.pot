@@ -1,0 +1,947 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: DraftSync 0.2.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/draftsync\n"
+"POT-Creation-Date: 2026-06-09 23:09+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"X-Generator: manual\n"
+"X-Domain: draftsync\n"
+
+msgid " Import complete with warnings: %d image(s) failed to import."
+msgstr ""
+
+msgid " Import complete. All images processed successfully."
+msgstr ""
+
+msgid "\"Failed to Fetch Document\" Error"
+msgstr ""
+
+msgid ".docx File"
+msgstr ""
+
+msgid "A Google account with access to the documents you want to import"
+msgstr ""
+
+msgid "ACF field values (e.g. acf_subtitle)"
+msgstr ""
+
+msgid "ACF is not active. Field %s mapping skipped."
+msgstr ""
+
+msgid "About External Services"
+msgstr ""
+
+msgid "Activate the plugin in Plugins \\u2192 Installed Plugins."
+msgstr ""
+
+msgid "Add rows with document URLs and optional per-row settings."
+msgstr ""
+
+msgid "After importing a document, DraftSync maintains a link between the WordPress post and the source document. You can re-sync to pull in updates."
+msgstr ""
+
+msgid "All .docx files pass through DraftSync\\u2019s ZIP security validator: magic byte verification, path traversal prevention, nested ZIP detection, entry count limits, and compression ratio checks."
+msgstr ""
+
+msgid "Archive contains nested ZIP files."
+msgstr ""
+
+msgid "Archive contains too many entries (max %d)."
+msgstr ""
+
+msgid "Archive contains unsafe entry names."
+msgstr ""
+
+msgid "Archive does not contain a valid document."
+msgstr ""
+
+msgid "Archive entry exceeds maximum uncompressed size of %s."
+msgstr ""
+
+msgid "Archive has suspicious compression ratio."
+msgstr ""
+
+msgid "Archive total uncompressed size exceeds %s."
+msgstr ""
+
+msgid "Authorization code missing. The SaaS bridge must support code exchange for secure authentication."
+msgstr ""
+
+msgid "Auto-resizes to max 1600px and converts to WebP. Saves disk space and improves LCP."
+msgstr ""
+
+msgid "Automatically pulls updates from Google Docs on a recurring schedule."
+msgstr ""
+
+msgid "Batch Size (per run)"
+msgstr ""
+
+msgid "Batch import \\u2014 Split into smaller documents or use bulk import with fewer rows per batch."
+msgstr ""
+
+msgid "Blockquotes"
+msgstr ""
+
+msgid "Bold, italic, strikethrough, underline, text color, subscript, superscript, and links (preserves URL and target)."
+msgstr ""
+
+msgid "Browse…"
+msgstr ""
+
+msgid "Bulk Import"
+msgstr ""
+
+msgid "Bulk import is limited to 100 rows per request."
+msgstr ""
+
+msgid "Bulk import multiple documents"
+msgstr ""
+
+msgid "Cannot open ZIP archive."
+msgstr ""
+
+msgid "Cannot open file for reading."
+msgstr ""
+
+msgid "Canonical URL"
+msgstr ""
+
+msgid "Canonical URL is not valid."
+msgstr ""
+
+msgid "Canonical URL must use http or https scheme."
+msgstr ""
+
+msgid "Check a specific job status"
+msgstr ""
+
+msgid "Check that the Google Doc is shared (at least \"Anyone with the link\")."
+msgstr ""
+
+msgid "Check the original document \\u2014 DraftSync faithfully reproduces the document structure."
+msgstr ""
+
+msgid "Classic Editor Support"
+msgstr ""
+
+msgid "Classic HTML"
+msgstr ""
+
+msgid "Classic mode produces clean HTML without block comments."
+msgstr ""
+
+msgid "Click Connect with Google to authorize access to your Google Docs."
+msgstr ""
+
+msgid "Click Import All."
+msgstr ""
+
+msgid "Click Import."
+msgstr ""
+
+msgid "Click Import/Synchronize Now."
+msgstr ""
+
+msgid "Click Re-Sync to pull the latest content."
+msgstr ""
+
+msgid "Click the DraftSync cloud icon in the top-right toolbar to open the sidebar."
+msgstr ""
+
+msgid "Click the cloud sync icon in the top toolbar."
+msgstr ""
+
+msgid "Comma-separated category names or IDs"
+msgstr ""
+
+msgid "Comma-separated tag names"
+msgstr ""
+
+msgid "Command"
+msgstr ""
+
+msgid "Common Flags"
+msgstr ""
+
+msgid "Compress and resize images during import."
+msgstr ""
+
+msgid "Configure import options (see Import Options below)."
+msgstr ""
+
+msgid "Configure import options."
+msgstr ""
+
+msgid "Conflict Detected: The post content was modified locally in WordPress since the last import. Enable force sync to override."
+msgstr ""
+
+msgid "Conflict Protection"
+msgstr ""
+
+msgid "Conflict: No baseline content hash recorded for this post. Cannot detect local edits safely. Enable force sync to proceed anyway."
+msgstr ""
+
+msgid "Connect Google Account"
+msgstr ""
+
+msgid "Connect your Google account to import Google Docs into WordPress."
+msgstr ""
+
+msgid "Connected"
+msgstr ""
+
+msgid "Connection"
+msgstr ""
+
+msgid "Content Options"
+msgstr ""
+
+msgid "Content policy"
+msgstr ""
+
+msgid "Contents"
+msgstr ""
+
+msgid "Control how imported content is formatted. Set these in the sidebar\\u2019s Style Overrides panel before importing."
+msgstr ""
+
+msgid "Could not create temporary file."
+msgstr ""
+
+msgid "Could not reopen DOCX file to read embedded images."
+msgstr ""
+
+msgid "Could not resolve featured image selection: %s"
+msgstr ""
+
+msgid "Could not retrieve file information from Google Drive."
+msgstr ""
+
+msgid "Could not write file to disk."
+msgstr ""
+
+msgid "Create as post or page (default: post)"
+msgstr ""
+
+msgid "Custom meta key %s rejected due to security configuration."
+msgstr ""
+
+msgid "Daily"
+msgstr ""
+
+msgid "Default"
+msgstr ""
+
+msgid "Default Output Mode"
+msgstr ""
+
+msgid "Default Post Author"
+msgstr ""
+
+msgid "Default Target Category"
+msgstr ""
+
+msgid "Default Text Alignment"
+msgstr ""
+
+msgid "Description"
+msgstr ""
+
+msgid "Disable image import \\u2014 Toggle off \"Import images\" in the sidebar."
+msgstr ""
+
+msgid "Disconnect Google Account"
+msgstr ""
+
+msgid "Disconnected"
+msgstr ""
+
+msgid "Download and sideload images to the Media Library."
+msgstr ""
+
+msgid "DraftSync"
+msgstr ""
+
+msgid "DraftSync can set post metadata during import via a metadata table at the beginning of your Google Doc, or via the sidebar\\u2019s Publishing Metadata panel."
+msgstr ""
+
+msgid "DraftSync is connected. You can import Google Docs from the editor sidebar or Imported Docs tab."
+msgstr ""
+
+msgid "DraftSync tracks a content hash of the last import. If the post has been manually edited, re-sync will refuse to overwrite by default. Use --force to override."
+msgstr ""
+
+msgid "DraftSync – Google Docs to Gutenberg"
+msgstr ""
+
+msgid "DraftSync — External Service & Data Disclosure"
+msgstr ""
+
+msgid "Drag and drop a .docx file onto the upload area, or click to browse."
+msgstr ""
+
+msgid "Dry Run - Validated successfully."
+msgstr ""
+
+msgid "Effect"
+msgstr ""
+
+msgid "Element"
+msgstr ""
+
+msgid "Empty or missing \"source\" field."
+msgstr ""
+
+msgid "Enable scheduled auto-sync for linked documents"
+msgstr ""
+
+msgid "Ensure \"Import images\" is toggled on."
+msgstr ""
+
+msgid "Ensure DraftSync has been connected to your Google account."
+msgstr ""
+
+msgid "Ensure your WordPress user has the edit_posts capability."
+msgstr ""
+
+msgid "Failed to download file from Google Drive."
+msgstr ""
+
+msgid "Failed to exchange authorization code with SaaS bridge."
+msgstr ""
+
+msgid "Failed to fetch document from Google."
+msgstr ""
+
+msgid "Failed to parse Google Doc data."
+msgstr ""
+
+msgid "Failed to restore import job state."
+msgstr ""
+
+msgid "Field"
+msgstr ""
+
+msgid "File exceeds maximum size of %s."
+msgstr ""
+
+msgid "File is not a valid ZIP archive."
+msgstr ""
+
+msgid "File not found or not readable."
+msgstr ""
+
+msgid "File upload failed."
+msgstr ""
+
+msgid "Flag"
+msgstr ""
+
+msgid "For CLI commands, pass --user=1 (or the appropriate user ID)."
+msgstr ""
+
+msgid "Force all paragraph text to a specific alignment: left, center, or right. Leave empty to use the document\\u2019s original alignment."
+msgstr ""
+
+msgid "Force re-sync \\u2014 Use --force flag or the force toggle to overwrite."
+msgstr ""
+
+msgid "Force re-sync even if unchanged or conflicts"
+msgstr ""
+
+msgid "Formatting Looks Wrong"
+msgstr ""
+
+msgid "Getting Started"
+msgstr ""
+
+msgid "Google APIs (docs.googleapis.com, www.googleapis.com, oauth2.googleapis.com) to fetch document content and file metadata."
+msgstr ""
+
+msgid "Google Account"
+msgstr ""
+
+msgid "Google Doc Import"
+msgstr ""
+
+msgid "Google Doc URL"
+msgstr ""
+
+msgid "Google Doc imported and published successfully."
+msgstr ""
+
+msgid "Google Doc imported as a new draft successfully."
+msgstr ""
+
+msgid "Google Drive .docx Import"
+msgstr ""
+
+msgid "Google connection is temporarily unavailable. Please try again later."
+msgstr ""
+
+msgid "Gutenberg Block"
+msgstr ""
+
+msgid "Gutenberg Blocks"
+msgstr ""
+
+msgid "H1\\u2192H2, H2\\u2192H3, H3\\u2192H4, etc."
+msgstr ""
+
+msgid "H1\\u2192H3, H2\\u2192H4, H3\\u2192H5, etc."
+msgstr ""
+
+msgid "Heading Demotion"
+msgstr ""
+
+msgid "Headings (H1\\u2013H6)"
+msgstr ""
+
+msgid "Help"
+msgstr ""
+
+msgid "Horizontal rules"
+msgstr ""
+
+msgid "Hourly"
+msgstr ""
+
+msgid "If your site uses the Classic Editor instead of Gutenberg, DraftSync automatically detects this and outputs clean HTML instead of Gutenberg block markup. No configuration needed."
+msgstr ""
+
+msgid "Image optimization via SaaS bridge is only available in SaaS connection mode."
+msgstr ""
+
+msgid "Images"
+msgstr ""
+
+msgid "Images Not Appearing"
+msgstr ""
+
+msgid "Import & Parse Document"
+msgstr ""
+
+msgid "Import .docx files stored in Google Drive without downloading them first:"
+msgstr ""
+
+msgid "Import Configurations"
+msgstr ""
+
+msgid "Import Defaults"
+msgstr ""
+
+msgid "Import Fails with Timeout"
+msgstr ""
+
+msgid "Import Google Docs and .docx files into Gutenberg with native block fidelity."
+msgstr ""
+
+msgid "Import Images"
+msgstr ""
+
+msgid "Import Images by Default"
+msgstr ""
+
+msgid "Import New Document"
+msgstr ""
+
+msgid "Import New Posts as Draft by Default"
+msgstr ""
+
+msgid "Import Options"
+msgstr ""
+
+msgid "Import Tables"
+msgstr ""
+
+msgid "Import Tables by Default"
+msgstr ""
+
+msgid "Import a Google Doc"
+msgstr ""
+
+msgid "Import a local .docx file"
+msgstr ""
+
+msgid "Import as Draft"
+msgstr ""
+
+msgid "Import as draft"
+msgstr ""
+
+msgid "Import failed: all %d image(s) could not be imported. Content was not committed."
+msgstr ""
+
+msgid "Import failed: all %d image(s) could not be imported. Existing content was left unchanged."
+msgstr ""
+
+msgid "Import failed: all %d image(s) could not be imported. The draft post has been removed."
+msgstr ""
+
+msgid "Import images"
+msgstr ""
+
+msgid "Import into an existing post"
+msgstr ""
+
+msgid "Import job not found or expired."
+msgstr ""
+
+msgid "Import multiple documents in a single operation via the sidebar, WP-CLI, or the REST API."
+msgstr ""
+
+msgid "Imported Docs"
+msgstr ""
+
+msgid "Inline Styles Preserved"
+msgstr ""
+
+msgid "Installation"
+msgstr ""
+
+msgid "Invalid Google Doc ID or URL."
+msgstr ""
+
+msgid "Invalid Google Doc ID."
+msgstr ""
+
+msgid "Invalid JSON in \"acf\" field."
+msgstr ""
+
+msgid "Invalid JSON in \"meta\" field."
+msgstr ""
+
+msgid "Invalid JSON in \"metadata\" field."
+msgstr ""
+
+msgid "Invalid file type. Only .docx files are accepted."
+msgstr ""
+
+msgid "Invalid or expired OAuth state. Please try connecting again."
+msgstr ""
+
+msgid "Invalid response from Google Drive."
+msgstr ""
+
+msgid "Invalid source URL scheme."
+msgstr ""
+
+msgid "Invalid source. REST bulk accepts Google Docs URLs/IDs or Drive file URLs only. Use CLI for local .docx files."
+msgstr ""
+
+msgid "Keep manual edits \\u2014 Do nothing; the post remains as-is."
+msgstr ""
+
+msgid "Lacks permission to edit target post."
+msgstr ""
+
+msgid "Large documents with many images may timeout on shared hosting. Solutions:"
+msgstr ""
+
+msgid "Linked Re-Sync"
+msgstr ""
+
+msgid "List all recent jobs"
+msgstr ""
+
+msgid "Loading\\u2026"
+msgstr ""
+
+msgid "Local Uploads"
+msgstr ""
+
+msgid "Maximum 100 rows per bulk request. Add \"dry_run\": true to validate without importing."
+msgstr ""
+
+msgid "Maximum documents to sync in one cron run (1–50)."
+msgstr ""
+
+msgid "Metadata structure containing SEO fields, terms, slug/excerpt overrides, ACF fields, and generic custom meta mappings."
+msgstr ""
+
+msgid "Minimum Heading Level"
+msgstr ""
+
+msgid "Minimum heading level to allow"
+msgstr ""
+
+msgid "Navigate to DraftSync in the WordPress admin sidebar."
+msgstr ""
+
+msgid "No API keys or technical setup required \\u2014 DraftSync handles authentication through its free SaaS bridge."
+msgstr ""
+
+msgid "No change (default)"
+msgstr ""
+
+msgid "No file uploaded."
+msgstr ""
+
+msgid "OAuth access tokens, refresh tokens, and your connection mode are stored locally in your WordPress database. These are deleted when you disconnect or uninstall the plugin."
+msgstr ""
+
+msgid "Off"
+msgstr ""
+
+msgid "On"
+msgstr ""
+
+msgid "Only .docx files are supported."
+msgstr ""
+
+msgid "Only native Google Docs and Drive .docx files are supported. Sheets and Slides are not supported."
+msgstr ""
+
+msgid "Open a post that was previously imported with DraftSync."
+msgstr ""
+
+msgid "Open any post in the block editor."
+msgstr ""
+
+msgid "Open or create a new post/page in the Gutenberg editor."
+msgstr ""
+
+msgid "Open the DraftSync sidebar."
+msgstr ""
+
+msgid "Optimize & Compress Images (Auto-WebP)"
+msgstr ""
+
+msgid "Optimize images"
+msgstr ""
+
+msgid "Option"
+msgstr ""
+
+msgid "Ordered / Unordered lists"
+msgstr ""
+
+msgid "Output Mode"
+msgstr ""
+
+msgid "Output format (default: blocks)"
+msgstr ""
+
+msgid "Overwrite Existing Content"
+msgstr ""
+
+msgid "Overwrite Existing Content by Default"
+msgstr ""
+
+msgid "Overwrite existing"
+msgstr ""
+
+msgid "PHP 7.4+"
+msgstr ""
+
+msgid "Page breaks"
+msgstr ""
+
+msgid "Paragraphs"
+msgstr ""
+
+msgid "Paste a Google Doc URL into the Document URL field."
+msgstr ""
+
+msgid "Paste a Google Drive file URL (e.g. https://drive.google.com/file/d/FILE_ID/view)."
+msgstr ""
+
+msgid "Paste your Google Doc URL."
+msgstr ""
+
+msgid "Permission Errors"
+msgstr ""
+
+msgid "Permission denied."
+msgstr ""
+
+msgid "Please connect your Google account in Settings first."
+msgstr ""
+
+msgid "Please connect your account to optimize images."
+msgstr ""
+
+msgid "Post content synchronized successfully."
+msgstr ""
+
+msgid "Post created successfully."
+msgstr ""
+
+msgid "Post excerpt"
+msgstr ""
+
+msgid "Post is not linked to a source document."
+msgstr ""
+
+msgid "Post is not linked to any source document. Cannot re-sync."
+msgstr ""
+
+msgid "Post not found."
+msgstr ""
+
+msgid "Post updated successfully."
+msgstr ""
+
+msgid "Post was imported via local docx upload (%s). Drag-and-drop uploads cannot re-sync dynamically."
+msgstr ""
+
+msgid "Prevent headings above a certain level from appearing."
+msgstr ""
+
+msgid "Processing images: %1$d of %2$d."
+msgstr ""
+
+msgid "Publishing Metadata"
+msgstr ""
+
+msgid "Quick Guide"
+msgstr ""
+
+msgid "Re-Sync Reports Conflict"
+msgstr ""
+
+msgid "Re-sync a specific post"
+msgstr ""
+
+msgid "Re-sync all linked posts"
+msgstr ""
+
+msgid "Remote Sources"
+msgstr ""
+
+msgid "Replace the current post content. When off, imported content is appended."
+msgstr ""
+
+msgid "Requirements"
+msgstr ""
+
+msgid "Review changes \\u2014 Compare the current post content with the source document."
+msgstr ""
+
+msgid "SEO focus keyword"
+msgstr ""
+
+msgid "SEO meta description"
+msgstr ""
+
+msgid "SEO title (Yoast / RankMath)"
+msgstr ""
+
+msgid "SaaS bridge URL is not configured."
+msgstr ""
+
+msgid "SaaS bridge response missing optimized URL."
+msgstr ""
+
+msgid "SaaS bridge returned HTTP status %d."
+msgstr ""
+
+msgid "SaaS bridge returned an invalid URL scheme."
+msgstr ""
+
+msgid "SaaS bridge returned an invalid response. Token exchange failed."
+msgstr ""
+
+msgid "Save Settings"
+msgstr ""
+
+msgid "Save as draft (default: on)"
+msgstr ""
+
+msgid "Save the post as a draft. When off, the post is published immediately."
+msgstr ""
+
+msgid "Scheduled Auto-Sync"
+msgstr ""
+
+msgid "Scheduled Sync"
+msgstr ""
+
+msgid "Security"
+msgstr ""
+
+msgid "Settings saved."
+msgstr ""
+
+msgid "Shift all heading levels down by N positions. Useful when your document uses H1 for titles but your theme reserves H1 for the post title."
+msgstr ""
+
+msgid "Shift headings down N levels"
+msgstr ""
+
+msgid "Source URL is empty."
+msgstr ""
+
+msgid "Style Overrides"
+msgstr ""
+
+msgid "Supported Metadata Fields"
+msgstr ""
+
+msgid "Switch to Bulk Import mode."
+msgstr ""
+
+msgid "Switch to Upload .docx mode using the toggle at the top."
+msgstr ""
+
+msgid "Sync Frequency"
+msgstr ""
+
+msgid "Tables"
+msgstr ""
+
+msgid "Term %1$s not found in %2$s. Current user lacks permissions to create terms."
+msgstr ""
+
+msgid "The DraftSync SaaS OAuth bridge (if you use the default SaaS connection mode) to broker Google authentication. No document content passes through the bridge."
+msgstr ""
+
+msgid "The Google Doc is empty or could not be parsed."
+msgstr ""
+
+msgid "The document is empty or could not be parsed."
+msgstr ""
+
+msgid "The document is empty or could not be rendered."
+msgstr ""
+
+msgid "The post_meta field contains invalid JSON."
+msgstr ""
+
+msgid "The sidebar shows the linked source document URL."
+msgstr ""
+
+msgid "The specified post was not found."
+msgstr ""
+
+msgid "This is a native Google Doc. Please use the Google Docs import with a docs.google.com URL."
+msgstr ""
+
+msgid "This means the post was manually edited since the last import. Options:"
+msgstr ""
+
+msgid "This post type is not supported for Google Doc import."
+msgstr ""
+
+msgid "To explicitly request HTML output (e.g., for use with page builders):"
+msgstr ""
+
+msgid "Toggle these options in the sidebar before importing:"
+msgstr ""
+
+msgid "Troubleshooting"
+msgstr ""
+
+msgid "Try disconnecting and reconnecting your Google account."
+msgstr ""
+
+msgid "Twice Daily"
+msgstr ""
+
+msgid "Twice Daily (DraftSync)"
+msgstr ""
+
+msgid "URL of the featured image (downloaded and attached)"
+msgstr ""
+
+msgid "URL slug for the post"
+msgstr ""
+
+msgid "Unsupported file type: %s. Only .docx files from Google Drive are supported."
+msgstr ""
+
+msgid "Unsupported source type \"%s\". Only gdoc and drive_file can re-sync."
+msgstr ""
+
+msgid "Upload .docx"
+msgstr ""
+
+msgid "Upload the draftsync folder to /wp-content/plugins/."
+msgstr ""
+
+msgid "Use WP-CLI \\u2014 CLI imports have longer timeout limits."
+msgstr ""
+
+msgid "Use style overrides to adjust heading levels and alignment."
+msgstr ""
+
+msgid "User Guideline"
+msgstr ""
+
+msgid "Validate without importing (bulk)"
+msgstr ""
+
+msgid "Value"
+msgstr ""
+
+msgid "Verify the Google Doc URL is correct and accessible."
+msgstr ""
+
+msgid "Verify your server allows outbound HTTP requests to googleusercontent.com."
+msgstr ""
+
+msgid "Via WP-CLI"
+msgstr ""
+
+msgid "Via the Gutenberg Sidebar"
+msgstr ""
+
+msgid "Via the REST API"
+msgstr ""
+
+msgid "Via the Sidebar"
+msgstr ""
+
+msgid "WP-CLI Commands"
+msgstr ""
+
+msgid "Wait for the import to complete. A success message with a link to the post will appear."
+msgstr ""
+
+msgid "What Gets Imported"
+msgstr ""
+
+msgid "When off, new content appends to the existing post."
+msgstr ""
+
+msgid "When off, new posts publish immediately if the user can publish."
+msgstr ""
+
+msgid "When you connect a Google account to import Google Docs, this plugin contacts the following external services:"
+msgstr ""
+
+msgid "When you use Google Docs import, DraftSync contacts Google APIs (docs.googleapis.com, www.googleapis.com, oauth2.googleapis.com) to fetch document content. If you use the SaaS connection mode, authentication is brokered through the DraftSync OAuth bridge. No document content passes through the bridge. OAuth tokens are stored locally in your WordPress database and are deleted when you disconnect or uninstall the plugin."
+msgstr ""
+
+msgid "Word Document (.docx) Import"
+msgstr ""
+
+msgid "WordPress 5.0+ with Gutenberg editor (Classic Editor also supported)"
+msgstr ""
+
+msgid "You can also import .docx files locally without any external services."
+msgstr ""
+
+msgid "You can disconnect anytime."
+msgstr ""
+
+msgid "You can use the plugin without any external services by importing local .docx files."
+msgstr ""
+
+msgid "You do not have permission to access this import job."
+msgstr ""
+
+msgid "You do not have permission to create posts."
+msgstr ""
+
+msgid "You do not have permission to edit this post."
+msgstr ""
+
+msgid "You do not have permission to perform bulk imports."
+msgstr ""

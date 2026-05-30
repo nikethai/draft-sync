@@ -1,0 +1,22 @@
+[Unit]
+Description=DraftSync OAuth Bridge
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+User=draftsync
+Group=draftsync
+EnvironmentFile=/opt/draftsync-bridge/config/.env
+ExecStart=/opt/draftsync-bridge/bin/draftsync-bridge
+Restart=on-failure
+RestartSec=3
+# hardening
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+PrivateTmp=true
+ReadWritePaths=/opt/draftsync-bridge/data
+AmbientCapabilities=
+
+[Install]
+WantedBy=multi-user.target

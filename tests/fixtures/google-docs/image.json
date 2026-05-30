@@ -1,0 +1,87 @@
+{
+	"title": "Image Test Document",
+	"body": {
+		"content": [
+			{
+				"paragraph": {
+					"elements": [
+						{
+							"textRun": {
+								"content": "Before image",
+								"textStyle": {}
+							}
+						}
+					],
+					"paragraphStyle": {
+						"namedStyleType": "NORMAL_TEXT"
+					}
+				}
+			},
+			{
+				"paragraph": {
+					"elements": [
+						{
+							"inlineObjectElement": {
+								"inlineObjectId": "img-001"
+							}
+						}
+					],
+					"paragraphStyle": {
+						"namedStyleType": "NORMAL_TEXT"
+					}
+				}
+			},
+			{
+				"paragraph": {
+					"elements": [
+						{
+							"textRun": {
+								"content": "After image",
+								"textStyle": {}
+							}
+						}
+					],
+					"paragraphStyle": {
+						"namedStyleType": "NORMAL_TEXT"
+					}
+				}
+			},
+			{
+				"paragraph": {
+					"elements": [
+						{
+							"inlineObjectElement": {
+								"inlineObjectId": "img-002"
+							}
+						}
+					],
+					"paragraphStyle": {
+						"namedStyleType": "NORMAL_TEXT"
+					}
+				}
+			}
+		]
+	},
+	"inlineObjects": {
+		"img-001": {
+			"inlineObjectProperties": {
+				"embeddedObject": {
+					"imageProperties": {
+						"contentUri": "https://example.com/image1.jpg"
+					},
+					"description": "First test image"
+				}
+			}
+		},
+		"img-002": {
+			"inlineObjectProperties": {
+				"embeddedObject": {
+					"imageProperties": {
+						"contentUri": "https://example.com/image2.png"
+					},
+					"title": "Second image title"
+				}
+			}
+		}
+	}
+}

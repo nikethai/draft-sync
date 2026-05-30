@@ -1,0 +1,10 @@
+# Node tooling and PHP/WordPress tests live in the repo root but are not part of
+# the editor bundle. They are excluded from the JS lint scope so the project's
+# browser/React lint config does not flag Node-only patterns (CommonJS require,
+# console output, etc.).
+scripts/
+tests/
+node_modules/
+build/
+assets/wporg/
+*.min.js

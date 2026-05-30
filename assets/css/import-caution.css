@@ -1,0 +1,19 @@
+/* ── Shared medium-emphasis caution zone ── */
+.gdtg-caution-zone {
+	background: #fcf0e6;
+	border-inline-start: 4px solid #b32d2e;
+	padding: 12px;
+	margin-bottom: 12px;
+}
+.gdtg-caution-zone .gdtg-checkbox-row {
+	margin-bottom: 0;
+}
+
+.gdtg-caution-zone__label {
+	font-size: 11px;
+	font-weight: 600;
+	text-transform: uppercase;
+	color: #b32d2e;
+	margin: 0 0 4px 0;
+	letter-spacing: 0.3px;
+}

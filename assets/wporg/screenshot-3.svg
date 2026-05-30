@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-label="DraftSync Imported Docs manager — schematic preview">
+  <title>DraftSync — Imported Docs manager preview</title>
+  <desc>Schematic preview of the Imported Docs admin page showing a list of linked posts grouped by source.</desc>
+
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f6f7fb"/>
+      <stop offset="100%" stop-color="#eef0f7"/>
+    </linearGradient>
+  </defs>
+
+  <rect x="0" y="0" width="1200" height="60" fill="#1d2327"/>
+  <circle cx="22" cy="30" r="6" fill="#ff5f57"/>
+  <circle cx="42" cy="30" r="6" fill="#ffbd2e"/>
+  <circle cx="62" cy="30" r="6" fill="#28c940"/>
+  <rect x="100" y="14" width="500" height="32" rx="6" fill="#2c3338"/>
+  <text x="120" y="34" font-family="monospace" font-size="14" fill="#a7aaad">draftsync.local/wp-admin/admin.php?page=draftsync&amp;tab=imported-docs</text>
+
+  <rect x="0" y="60" width="180" height="840" fill="#1d2327"/>
+  <g font-family="-apple-system, system-ui, sans-serif" font-size="14" fill="#c3c4c7">
+    <text x="20" y="100" font-size="13" font-weight="700" fill="#a7aaad">DRAFTSYNC</text>
+    <text x="20" y="160">Dashboard</text>
+    <text x="20" y="190">Posts</text>
+    <text x="20" y="220">Media</text>
+    <text x="20" y="250">Pages</text>
+    <rect x="0" y="270" width="180" height="34" fill="#2271b1"/>
+    <text x="20" y="292" fill="#fff" font-weight="600">DraftSync</text>
+    <rect x="0" y="304" width="180" height="34" fill="#0c4a78"/>
+    <text x="20" y="326" fill="#fff">Imported Docs</text>
+    <text x="20" y="358">Settings</text>
+  </g>
+
+  <rect x="180" y="60" width="1020" height="840" fill="url(#bg)"/>
+
+  <text x="220" y="120" font-family="-apple-system, system-ui, sans-serif" font-size="32" font-weight="700" fill="#1d2327">Imported Docs</text>
+  <text x="220" y="148" font-family="-apple-system, system-ui, sans-serif" font-size="14" fill="#50575e">Documents you've imported via DraftSync. Linked Google Docs can be re-synced; local .docx uploads cannot.</text>
+
+  <text x="220" y="200" font-family="-apple-system, system-ui, sans-serif" font-size="18" font-weight="600" fill="#1d2327">Remote Sources</text>
+
+  <!-- Row 1 -->
+  <rect x="220" y="220" width="940" height="80" rx="8" fill="#fff" stroke="#c3c4c7"/>
+  <rect x="240" y="240" width="40" height="40" rx="6" fill="#2271b1"/>
+  <text x="260" y="265" font-family="-apple-system, system-ui, sans-serif" font-size="16" fill="#fff" font-weight="700" text-anchor="middle">G</text>
+  <text x="300" y="252" font-family="-apple-system, system-ui, sans-serif" font-size="15" font-weight="600" fill="#1d2327">Q4 Launch Plan — Master</text>
+  <text x="300" y="272" font-family="-apple-system, system-ui, sans-serif" font-size="13" fill="#50575e">Google Doc · 3 linked posts · last imported 2 hours ago</text>
+  <rect x="800" y="248" width="100" height="24" rx="12" fill="#dff7e2"/>
+  <text x="850" y="265" font-family="-apple-system, system-ui, sans-serif" font-size="11" font-weight="600" fill="#1a7f37" text-anchor="middle">SYNCABLE</text>
+  <rect x="1060" y="246" width="80" height="28" rx="4" fill="#2271b1"/>
+  <text x="1100" y="265" font-family="-apple-system, system-ui, sans-serif" font-size="12" font-weight="600" fill="#fff" text-anchor="middle">Re-sync</text>
+
+  <!-- Row 2 -->
+  <rect x="220" y="312" width="940" height="80" rx="8" fill="#fff" stroke="#c3c4c7"/>
+  <rect x="240" y="332" width="40" height="40" rx="6" fill="#2271b1"/>
+  <text x="260" y="357" font-family="-apple-system, system-ui, sans-serif" font-size="16" fill="#fff" font-weight="700" text-anchor="middle">G</text>
+  <text x="300" y="344" font-family="-apple-system, system-ui, sans-serif" font-size="15" font-weight="600" fill="#1d2327">Engineering RFC — Index</text>
+  <text x="300" y="364" font-family="-apple-system, system-ui, sans-serif" font-size="13" fill="#50575e">Google Doc · 1 linked post · last imported yesterday</text>
+  <rect x="800" y="340" width="100" height="24" rx="12" fill="#dff7e2"/>
+  <text x="850" y="357" font-family="-apple-system, system-ui, sans-serif" font-size="11" font-weight="600" fill="#1a7f37" text-anchor="middle">SYNCABLE</text>
+  <rect x="1060" y="338" width="80" height="28" rx="4" fill="#2271b1"/>
+  <text x="1100" y="357" font-family="-apple-system, system-ui, sans-serif" font-size="12" font-weight="600" fill="#fff" text-anchor="middle">Re-sync</text>
+
+  <!-- Row 3 (error) -->
+  <rect x="220" y="404" width="940" height="80" rx="8" fill="#fff" stroke="#c3c4c7"/>
+  <rect x="240" y="424" width="40" height="40" rx="6" fill="#d63638"/>
+  <text x="260" y="449" font-family="-apple-system, system-ui, sans-serif" font-size="16" fill="#fff" font-weight="700" text-anchor="middle">!</text>
+  <text x="300" y="436" font-family="-apple-system, system-ui, sans-serif" font-size="15" font-weight="600" fill="#1d2327">Customer Research Notes</text>
+  <text x="300" y="456" font-family="-apple-system, system-ui, sans-serif" font-size="13" fill="#d63638">Google Doc · rate_limited · retry at 14:32</text>
+  <rect x="800" y="432" width="100" height="24" rx="12" fill="#fef0f1"/>
+  <text x="850" y="449" font-family="-apple-system, system-ui, sans-serif" font-size="11" font-weight="600" fill="#d63638" text-anchor="middle">ERROR</text>
+  <rect x="1060" y="430" width="80" height="28" rx="4" fill="#2271b1"/>
+  <text x="1100" y="449" font-family="-apple-system, system-ui, sans-serif" font-size="12" font-weight="600" fill="#fff" text-anchor="middle">Diagnose</text>
+
+  <text x="220" y="540" font-family="-apple-system, system-ui, sans-serif" font-size="18" font-weight="600" fill="#1d2327">Local Uploads</text>
+
+  <rect x="220" y="560" width="940" height="80" rx="8" fill="#fff" stroke="#c3c4c7"/>
+  <rect x="240" y="580" width="40" height="40" rx="6" fill="#50575e"/>
+  <text x="260" y="605" font-family="-apple-system, system-ui, sans-serif" font-size="14" fill="#fff" font-weight="700" text-anchor="middle">D</text>
+  <text x="300" y="592" font-family="-apple-system, system-ui, sans-serif" font-size="15" font-weight="600" fill="#1d2327">brand-guidelines.docx</text>
+  <text x="300" y="612" font-family="-apple-system, system-ui, sans-serif" font-size="13" fill="#50575e">.docx upload · 1 linked post · last imported 3 days ago</text>
+  <rect x="800" y="588" width="100" height="24" rx="12" fill="#f0f0f1"/>
+  <text x="850" y="605" font-family="-apple-system, system-ui, sans-serif" font-size="11" font-weight="600" fill="#50575e" text-anchor="middle">NOT SYNCABLE</text>
+
+  <rect x="0" y="860" width="1200" height="40" fill="#1d2327" opacity="0.85"/>
+  <text x="600" y="886" font-family="-apple-system, system-ui, sans-serif" font-size="13" fill="#a7aaad" text-anchor="middle">Schematic preview — real screenshots should be captured from a running WordPress install before submission.</text>
+</svg>

@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-label="DraftSync admin settings screen — schematic preview">
+  <title>DraftSync — Admin settings preview</title>
+  <desc>Schematic preview of the DraftSync admin settings page. The page shows tabs for Import Defaults, Connection, Scheduled Sync, Imported Docs, and Help, with a Connect Google Account card visible.</desc>
+
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f6f7fb"/>
+      <stop offset="100%" stop-color="#eef0f7"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Browser chrome -->
+  <rect x="0" y="0" width="1200" height="60" fill="#1d2327"/>
+  <circle cx="22" cy="30" r="6" fill="#ff5f57"/>
+  <circle cx="42" cy="30" r="6" fill="#ffbd2e"/>
+  <circle cx="62" cy="30" r="6" fill="#28c940"/>
+  <rect x="100" y="14" width="500" height="32" rx="6" fill="#2c3338"/>
+  <text x="120" y="34" font-family="monospace" font-size="14" fill="#a7aaad">draftsync.local/wp-admin/admin.php?page=draftsync</text>
+
+  <!-- WP admin sidebar -->
+  <rect x="0" y="60" width="180" height="840" fill="#1d2327"/>
+  <text x="20" y="100" font-family="-apple-system, system-ui, sans-serif" font-size="13" font-weight="700" fill="#a7aaad" letter-spacing="1">DRAFTSYNC</text>
+  <g font-family="-apple-system, system-ui, sans-serif" font-size="14" fill="#c3c4c7">
+    <text x="20" y="160">Dashboard</text>
+    <text x="20" y="190">Posts</text>
+    <text x="20" y="220">Media</text>
+    <text x="20" y="250">Pages</text>
+    <rect x="0" y="270" width="180" height="34" fill="#2271b1"/>
+    <text x="20" y="292" fill="#fff" font-weight="600">DraftSync</text>
+    <text x="20" y="324">Imported Docs</text>
+    <text x="20" y="354">Settings</text>
+  </g>
+
+  <!-- Main content -->
+  <rect x="180" y="60" width="1020" height="840" fill="url(#bg)"/>
+
+  <!-- Page header -->
+  <text x="220" y="120" font-family="-apple-system, system-ui, sans-serif" font-size="32" font-weight="700" fill="#1d2327">DraftSync</text>
+  <rect x="220" y="135" width="58" height="20" rx="10" fill="#2271b1"/>
+  <text x="249" y="149" font-family="-apple-system, system-ui, sans-serif" font-size="11" font-weight="600" fill="#fff" text-anchor="middle">v0.2.0</text>
+  <text x="290" y="151" font-family="-apple-system, system-ui, sans-serif" font-size="14" fill="#50575e">Import Google Docs and .docx files into Gutenberg with native block fidelity.</text>
+
+  <!-- Tabs -->
+  <g font-family="-apple-system, system-ui, sans-serif" font-size="14" fill="#50575e">
+    <rect x="220" y="180" width="180" height="44" fill="#fff" stroke="#c3c4c7"/>
+    <text x="310" y="208" text-anchor="middle" font-weight="600" fill="#1d2327">Import Defaults</text>
+    <rect x="400" y="180" width="180" height="44" fill="#fff" stroke="#c3c4c7"/>
+    <text x="490" y="208" text-anchor="middle">Connection</text>
+    <rect x="580" y="180" width="180" height="44" fill="#fff" stroke="#c3c4c7"/>
+    <text x="670" y="208" text-anchor="middle">Scheduled Sync</text>
+    <rect x="760" y="180" width="180" height="44" fill="#fff" stroke="#c3c4c7"/>
+    <text x="850" y="208" text-anchor="middle">Imported Docs</text>
+    <rect x="940" y="180" width="180" height="44" fill="#fff" stroke="#c3c4c7"/>
+    <text x="1030" y="208" text-anchor="middle">Help</text>
+  </g>
+
+  <!-- Connection card -->
+  <rect x="220" y="244" width="900" height="200" rx="8" fill="#fff" stroke="#c3c4c7"/>
+  <text x="240" y="278" font-family="-apple-system, system-ui, sans-serif" font-size="18" font-weight="600" fill="#1d2327">Google Account</text>
+  <rect x="240" y="300" width="120" height="28" rx="14" fill="#d63638"/>
+  <text x="300" y="319" font-family="-apple-system, system-ui, sans-serif" font-size="12" font-weight="600" fill="#fff" text-anchor="middle">Disconnected</text>
+  <text x="240" y="360" font-family="-apple-system, system-ui, sans-serif" font-size="14" fill="#50575e">Connect your Google account to import Google Docs into WordPress.</text>
+  <rect x="240" y="380" width="240" height="40" rx="4" fill="#2271b1"/>
+  <text x="360" y="406" font-family="-apple-system, system-ui, sans-serif" font-size="14" font-weight="600" fill="#fff" text-anchor="middle">Connect Google Account</text>
+  <text x="240" y="438" font-family="-apple-system, system-ui, sans-serif" font-size="13" fill="#50575e">You can disconnect anytime.</text>
+
+  <!-- Import defaults card -->
+  <rect x="220" y="464" width="900" height="280" rx="8" fill="#fff" stroke="#c3c4c7"/>
+  <text x="240" y="498" font-family="-apple-system, system-ui, sans-serif" font-size="18" font-weight="600" fill="#1d2327">Import Defaults</text>
+
+  <text x="240" y="538" font-family="-apple-system, system-ui, sans-serif" font-size="14" fill="#1d2327">Default Output Mode</text>
+  <rect x="240" y="548" width="280" height="32" rx="4" fill="#fff" stroke="#8c8f94"/>
+  <text x="252" y="569" font-family="-apple-system, system-ui, sans-serif" font-size="13" fill="#1d2327">Gutenberg Blocks</text>
+
+  <text x="240" y="606" font-family="-apple-system, system-ui, sans-serif" font-size="14" fill="#1d2327">Default Target Category</text>
+  <rect x="240" y="616" width="280" height="32" rx="4" fill="#fff" stroke="#8c8f94"/>
+  <text x="252" y="637" font-family="-apple-system, system-ui, sans-serif" font-size="13" fill="#8c8f94">— Select a category —</text>
+
+  <text x="540" y="538" font-family="-apple-system, system-ui, sans-serif" font-size="14" fill="#1d2327">Default Post Author</text>
+  <rect x="540" y="548" width="280" height="32" rx="4" fill="#fff" stroke="#8c8f94"/>
+  <text x="552" y="569" font-family="-apple-system, system-ui, sans-serif" font-size="13" fill="#1d2327">admin</text>
+
+  <!-- Checkboxes -->
+  <g font-family="-apple-system, system-ui, sans-serif" font-size="14" fill="#1d2327">
+    <rect x="240" y="678" width="18" height="18" fill="#2271b1"/>
+    <path d="M244 687 l4 4 l8 -8" fill="none" stroke="#fff" stroke-width="2"/>
+    <text x="270" y="692">Import Images by Default</text>
+
+    <rect x="240" y="708" width="18" height="18" fill="#2271b1"/>
+    <path d="M244 717 l4 4 l8 -8" fill="none" stroke="#fff" stroke-width="2"/>
+    <text x="270" y="722">Import Tables by Default</text>
+
+    <rect x="540" y="678" width="18" height="18" fill="#fff" stroke="#8c8f94"/>
+    <text x="570" y="692">Overwrite Existing Content by Default</text>
+
+    <rect x="540" y="708" width="18" height="18" fill="#2271b1"/>
+    <path d="M544 717 l4 4 l8 -8" fill="none" stroke="#fff" stroke-width="2"/>
+    <text x="570" y="722">Import New Posts as Draft by Default</text>
+  </g>
+
+  <!-- Save button -->
+  <rect x="220" y="770" width="160" height="40" rx="4" fill="#2271b1"/>
+  <text x="300" y="796" font-family="-apple-system, system-ui, sans-serif" font-size="14" font-weight="600" fill="#fff" text-anchor="middle">Save Changes</text>
+
+  <!-- Watermark -->
+  <rect x="0" y="860" width="1200" height="40" fill="#1d2327" opacity="0.85"/>
+  <text x="600" y="886" font-family="-apple-system, system-ui, sans-serif" font-size="13" fill="#a7aaad" text-anchor="middle">Schematic preview — real screenshots should be captured from a running WordPress install before submission.</text>
+</svg>

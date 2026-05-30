@@ -1,0 +1,10 @@
+# Real environment config — NEVER commit.
+deploy/.env
+
+# Binary
+dist/
+
+# SQLite databases
+*.db
+*.db-journal
+*.db-wal
