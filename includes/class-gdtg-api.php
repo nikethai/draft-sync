@@ -488,10 +488,6 @@ class GDTG_API {
 			return new WP_Error( 'invalid_source_url', __( 'Invalid source URL scheme.', 'draftsync' ) );
 		}
 
-		$mode = get_option( 'gdtg_connection_mode', 'saas' );
-		if ( $mode !== 'saas' ) {
-			return new WP_Error( 'gdtg_saas_only', __( 'Image optimization via SaaS bridge is only available in SaaS connection mode.', 'draftsync' ) );
-		}
 
 		$token = $this->get_access_token();
 		if ( ! $token ) {

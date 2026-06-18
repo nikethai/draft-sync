@@ -212,7 +212,7 @@ class GDTG_Admin {
 				'post_source_type'  => get_post_meta( get_the_ID(), '_gdtg_source_type', true ) ?: '',
 				'post_auto_sync'    => get_post_meta( get_the_ID(), '_gdtg_auto_sync', true ) ?: '0',
 				'connection_mode'       => sanitize_text_field( get_option( 'gdtg_connection_mode', 'saas' ) ),
-				'drive_browser_enabled' => ( 'enterprise' === get_option( 'gdtg_connection_mode', 'saas' ) && ! empty( get_option( 'gdtg_enterprise_client_id', '' ) ) ),
+				'drive_browser_enabled' => ! empty( get_option( 'gdtg_enterprise_client_id', '' ) ),
 				'picker_config_url'     => esc_url_raw( rest_url( 'gdtg/v1/picker/config' ) ),
 				'picker_token_url'      => esc_url_raw( rest_url( 'gdtg/v1/auth/token' ) ),
 			]
@@ -281,9 +281,6 @@ class GDTG_Admin {
 			'sanitize_callback' => 'sanitize_text_field',
 		] );
 		register_setting( 'gdtg_settings_group', 'gdtg_enterprise_client_secret', [
-			'sanitize_callback' => 'sanitize_text_field',
-		] );
-		register_setting( 'gdtg_settings_group', 'gdtg_license_key', [
 			'sanitize_callback' => 'sanitize_text_field',
 		] );
 
@@ -408,7 +405,7 @@ class GDTG_Admin {
 			wp_safe_redirect( admin_url( 'admin.php?page=gdtg-settings&tab=connection&connection=success' ) );
 			exit;
 		}
-		// 2. Enterprise Client OAuth Callback
+		// 2. Direct OAuth Client OAuth Callback
 		if ( isset( $_GET['code'] ) && 'enterprise' === get_option( 'gdtg_connection_mode', 'saas' ) && ! isset( $_GET['gdtg_saas_callback'] ) ) {
 			$code          = sanitize_text_field( wp_unslash( $_GET['code'] ) );
 			$state         = sanitize_text_field( wp_unslash( $_GET['state'] ?? '' ) );
@@ -439,12 +436,12 @@ class GDTG_Admin {
 				$data = json_decode( $body, true );
 				if ( isset( $data['access_token'] ) ) {
 				$access_token = sanitize_text_field( $data['access_token'] );
-				// Store Enterprise OAuth access token encrypted at rest. The
+				// Store OAuth access token encrypted at rest. The
 				// access token is always non-empty on this path and must be
 				// stored, so any storage failure here is a hard error.
 				$access_stored = GDTG_Secret_Store::set( 'gdtg_enterprise_access_token', $access_token );
 				if ( ! $access_stored ) {
-					wp_die( esc_html__( 'Failed to securely store Enterprise OAuth access token.', 'draftsync' ), '', array( 'response' => 500 ) );
+					wp_die( esc_html__( 'Failed to securely store OAuth access token.', 'draftsync' ), '', array( 'response' => 500 ) );
 				}
 				// Refresh token: Google routinely omits this on re-consent
 				// (only the first consent returns one). Only write when the
@@ -454,7 +451,7 @@ class GDTG_Admin {
 					$refresh_token = sanitize_text_field( $data['refresh_token'] );
 					$refresh_stored = GDTG_Secret_Store::set( 'gdtg_enterprise_refresh_token', $refresh_token );
 					if ( ! $refresh_stored ) {
-						wp_die( esc_html__( 'Failed to securely store Enterprise OAuth refresh token.', 'draftsync' ), '', array( 'response' => 500 ) );
+					wp_die( esc_html__( 'Failed to securely store OAuth refresh token.', 'draftsync' ), '', array( 'response' => 500 ) );
 					}
 				}
 				$expires_in = isset( $data['expires_in'] ) ? absint( $data['expires_in'] ) : 3600;
@@ -485,7 +482,6 @@ class GDTG_Admin {
 			$mode = sanitize_text_field( wp_unslash( $_POST['gdtg_connection_mode'] ?? 'saas' ) );
 			$mode = in_array( $mode, [ 'saas', 'enterprise' ], true ) ? $mode : 'saas';
 			update_option( 'gdtg_connection_mode', $mode );
-			update_option( 'gdtg_license_key', sanitize_text_field( wp_unslash( $_POST['gdtg_license_key'] ?? '' ) ) );
 			update_option( 'gdtg_default_category', absint( $_POST['gdtg_default_category'] ?? 1 ) );
 			$heading_demotion = absint( $_POST['gdtg_default_heading_demotion'] ?? 0 );
 			update_option( 'gdtg_default_heading_demotion', max( 0, min( 5, $heading_demotion ) ) );
@@ -533,7 +529,7 @@ class GDTG_Admin {
 				}
 			}
 
-			// Pre-flight validation for Enterprise mode.
+		// Pre-flight validation for Direct OAuth mode.
 			if ( 'enterprise' === $mode ) {
 				$preflight_client_id    = trim( (string) get_option( 'gdtg_enterprise_client_id', '' ) );
 				$preflight_client_secret = GDTG_Secret_Store::get( 'gdtg_enterprise_client_secret' );
@@ -544,13 +540,13 @@ class GDTG_Admin {
 				$preflight_notices = array();
 
 				if ( '' === $preflight_client_id ) {
-					$preflight_notices[] = __( 'Missing Client ID — Google OAuth Client ID is required for Enterprise mode.', 'draftsync' );
+				$preflight_notices[] = __( 'Missing Client ID — Google OAuth Client ID is required for Direct OAuth mode.', 'draftsync' );
 				} elseif ( ! preg_match( '/^\d+-[a-z0-9-]+\.apps\.googleusercontent\.com$/', $preflight_client_id ) ) {
 					$preflight_notices[] = __( "Client ID doesn't look like a Google OAuth web client ID.", 'draftsync' );
 				}
 
 				if ( '' === $preflight_client_secret ) {
-					$preflight_notices[] = __( 'Missing Client Secret — Google OAuth Client Secret is required for Enterprise mode.', 'draftsync' );
+				$preflight_notices[] = __( 'Missing Client Secret — Google OAuth Client Secret is required for Direct OAuth mode.', 'draftsync' );
 				}
 
 				foreach ( $preflight_notices as $notice ) {
@@ -567,7 +563,6 @@ class GDTG_Admin {
 		// ── State variables ──
 		$current_mode    = get_option( 'gdtg_connection_mode', 'saas' );
 		$is_connected    = ( 'enterprise' === $current_mode ) ? get_option( 'gdtg_enterprise_connected', 0 ) : get_option( 'gdtg_saas_connected', 0 );
-		$license_key     = get_option( 'gdtg_license_key', '' );
 		$client_id       = get_option( 'gdtg_enterprise_client_id', '' );
 		$client_secret   = GDTG_Secret_Store::get( 'gdtg_enterprise_client_secret' );
 		if ( is_wp_error( $client_secret ) ) {
@@ -678,18 +673,18 @@ class GDTG_Admin {
 					<p><?php esc_html_e( 'When you use Google Docs import, DraftSync contacts Google APIs (docs.googleapis.com, www.googleapis.com, oauth2.googleapis.com) to fetch document content. If you use the SaaS connection mode, authentication is brokered through the DraftSync OAuth bridge. No document content passes through the bridge. OAuth tokens are stored locally in your WordPress database and are deleted when you disconnect or uninstall the plugin.', 'draftsync' ); ?></p>
 					<p><?php esc_html_e( 'You can also import .docx files locally without any external services.', 'draftsync' ); ?></p>
 				</div>
-			<!-- Phase 4: Enterprise Setup Guidance -->
+		<!-- Direct OAuth Setup Guidance -->
 			<div class="gdtg-card gdtg-card--enterprise-guide" style="margin-top: 16px;">
-				<h3><?php esc_html_e( 'Enterprise Setup Guide', 'draftsync' ); ?></h3>
-				<p><?php esc_html_e( 'Enterprise mode lets you use your own Google Cloud OAuth 2.0 credentials for direct, self-hosted authentication. This is ideal when you need compliance control, run on a custom domain, or prefer not to use the SaaS bridge.', 'draftsync' ); ?></p>
-				<ol class="gdtg-enterprise-steps">
-					<li><?php esc_html_e( 'Go to Google Cloud Console and create a Web Application OAuth 2.0 client.', 'draftsync' ); ?> <a href="https://console.cloud.google.com/apis/credentials" target="_blank" rel="noopener noreferrer"><?php esc_html_e( 'Open Google Cloud Console', 'draftsync' ); ?> &#8599;</a></li>
-					<li><?php esc_html_e( 'Paste the Client ID and Client Secret below.', 'draftsync' ); ?></li>
-					<li><?php esc_html_e( 'Click Save Settings, then Connect Google Account.', 'draftsync' ); ?></li>
-				</ol>
-				<p class="description"><?php esc_html_e( 'Enterprise BYO-key is supported for interactive imports from the admin screen and Gutenberg sidebar. WP-CLI Google-source imports, scheduled auto-sync in Enterprise mode, and multisite Enterprise setups are not supported yet.', 'draftsync' ); ?></p>
+			<h3><?php esc_html_e( 'Direct OAuth Setup Guide', 'draftsync' ); ?></h3>
+			<p><?php esc_html_e( 'Direct OAuth mode lets you use your own Google Cloud OAuth 2.0 credentials for direct, self-hosted authentication. This is ideal when you need compliance control, run on a custom domain, or prefer not to use the SaaS bridge.', 'draftsync' ); ?></p>
+			<ol class="gdtg-enterprise-steps">
+				<li><?php esc_html_e( 'Go to Google Cloud Console and create a Web Application OAuth 2.0 client.', 'draftsync' ); ?> <a href="https://console.cloud.google.com/apis/credentials" target="_blank" rel="noopener noreferrer"><?php esc_html_e( 'Open Google Cloud Console', 'draftsync' ); ?> &#8599;</a></li>
+				<li><?php esc_html_e( 'Paste the Client ID and Client Secret below.', 'draftsync' ); ?></li>
+				<li><?php esc_html_e( 'Click Save Settings, then Connect Google Account.', 'draftsync' ); ?></li>
+			</ol>
+			<p class="description"><?php esc_html_e( 'Direct OAuth (BYO-key) is supported for imports from the admin screen, Gutenberg sidebar, WP-CLI, and scheduled auto-sync.', 'draftsync' ); ?></p>
 			</div>
-			<!-- Phase 2: Enterprise connection configuration -->
+		<!-- Direct OAuth connection configuration -->
 			<div class="gdtg-card" style="margin-top: 16px;">
 				<h3><?php esc_html_e( 'Connection Mode', 'draftsync' ); ?></h3>
 				<div class="gdtg-form-row">
@@ -701,7 +696,7 @@ class GDTG_Admin {
 				<div class="gdtg-form-row">
 					<label>
 						<input type="radio" name="gdtg_connection_mode" value="enterprise" <?php checked( $current_mode, 'enterprise' ); ?> />
-						<?php esc_html_e( 'Enterprise — direct Google OAuth with your own client credentials', 'draftsync' ); ?>
+					<?php esc_html_e( 'Direct OAuth — direct Google OAuth with your own client credentials', 'draftsync' ); ?>
 					</label>
 				</div>
 				<div id="gdtg-enterprise-fields" style="<?php echo 'enterprise' === $current_mode ? '' : 'display:none;'; ?> margin-top: 12px;">
@@ -743,7 +738,7 @@ class GDTG_Admin {
 					<?php if ( 'enterprise' === $current_mode && $client_id ) : ?>
 					<div class="gdtg-form-row">
 						<a href="<?php echo esc_url( $google_auth_url ); ?>" class="button button-primary">
-							<?php esc_html_e( 'Connect Google Account (Enterprise)', 'draftsync' ); ?>
+						<?php esc_html_e( 'Connect Google Account (Direct OAuth)', 'draftsync' ); ?>
 						</a>
 					</div>
 					<?php endif; ?>

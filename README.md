@@ -9,9 +9,9 @@ DraftSync reads the Google Docs REST API JSON or parses .docx OOXML, reconstruct
 
 - **Native Gutenberg blocks** — each paragraph, heading, list, image, and table becomes an independently editable block
 - **.docx import** — upload .docx files or import from Google Drive; namespace-aware OOXML parser with ZIP security hardening
-- **Drive Picker (Enterprise)** — "Choose from Google Drive" button in the sidebar; select Docs/Drive files without copy-pasting URLs
+- **Drive Picker** — "Choose from Google Drive" button in the sidebar; select Docs/Drive files without copy-pasting URLs
 - **Sync health visibility** — per-post sync event log with info/warning/error events; clear event history via REST
-- **Encrypted Enterprise secrets** — AES-256-GCM encryption for `gdtg_enterprise_client_secret` at rest via `GDTG_Secret_Store`
+- **Encrypted OAuth secrets** — AES-256-GCM encryption for OAuth client secrets at rest via `GDTG_Secret_Store`
 - **WP-CLI commands** — `wp draftsync import`, `wp draftsync import-docx`, `wp draftsync status` for headless workflows
 - **Bulk import** — import multiple Google Docs or .docx files in a single REST or CLI call; dry-run validation; per-row metadata, SEO, ACF
 - **Linked re-sync** — re-import from the original source with conflict detection (baseline content hash) and force override; auto-migrates Drive .docx to Google Doc source when Google converts the file
@@ -58,9 +58,9 @@ wp draftsync migrate-drive-sources --user=1
 **Troubleshooting:** If migration fails (e.g., Google Docs API is temporarily unavailable), the post keeps its `drive_file` source type. The next re-sync will retry automatically.
 
 
-### Drive Picker (Enterprise)
+### Drive Picker
 
-Enterprise users can select Google Docs and Drive files directly from the Gutenberg sidebar without copying URLs:
+Users with Direct OAuth credentials can select Google Docs and Drive files directly from the Gutenberg sidebar without copying URLs:
 
 1. Click **"Choose from Google Drive"** next to the URL input.
 2. The Google Picker API opens showing your Docs and Drive files.
@@ -78,13 +78,13 @@ Manual URL/ID input remains available as a fallback for all connection modes.
 | WordPress | 6.4+ |
 
 
-**Enterprise JSON import helper:** On the settings page, paste your Google Cloud OAuth 2.0 client JSON directly — DraftSync extracts `client_id` and `client_secret` automatically and encrypts the secret at rest.
+**Direct OAuth JSON import helper:** On the settings page, paste your Google Cloud OAuth 2.0 client JSON directly — DraftSync extracts `client_id` and `client_secret` automatically and encrypts the secret at rest.
 
 ## Quick Start
 
 ```bash
 # Clone the repository
-git clone https://github.com/your-org/draftsync.git
+git clone https://github.com/nikethai/draft-sync.git
 cd draftsync
 
 # Install Node dependencies
@@ -138,7 +138,7 @@ wp draftsync migrate-drive-sources --user=1
 
 ## Architecture Overview
 
-**Enterprise secret encryption:** Only `gdtg_enterprise_client_secret` is encrypted at rest using AES-256-GCM via OpenSSL in `GDTG_Secret_Store`. The encryption key is derived from `wp_salt('auth')` using SHA-256. OAuth access and refresh tokens remain stored in plain `wp_options` rows today.
+**OAuth secret encryption:** OAuth client secrets are encrypted at rest using AES-256-GCM via OpenSSL in `GDTG_Secret_Store`. The encryption key is derived from `wp_salt('auth')` using SHA-256.
 
 ```
 Google Doc URL ──→ parse_source_reference() ──→ type: gdoc ──→ GDTG_API → GDTG_Parser ──┐
@@ -206,6 +206,7 @@ draftsync/
 │   ├── api-token-test.php             # API token lifecycle (~25 assertions)
 │   └── fixtures/                      # JSON + DOCX test fixtures
 
+
 ---
 
 ## Documentation
@@ -217,8 +218,6 @@ draftsync/
 | [Code Standards](docs/code-standards.md) | PHP 7.4 rules, WPCS conventions, escaping contract, security patterns |
 | [System Architecture](docs/system-architecture.md) | Class deep dive, request lifecycle, OAuth flows, image pipeline, state management |
 | [Design Document](docs/design-doc.md) | Design decisions, AST model, component map, ship order |
-
----
 
 ## Development
 

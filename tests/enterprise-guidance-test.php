@@ -353,25 +353,24 @@ if ( is_wp_error( $cs ) ) {
 assert_not_empty( $cs, 'Fallback returns raw option value when decryption fails' );
 
 // ----------------------------------------------------------------
-suite( 'Phase 1: Enterprise support boundary copy exists in admin guidance' );
+suite( 'Phase 1: Direct OAuth guidance copy exists in admin guidance' );
 
-// The support boundary text lives in class-gdtg-admin.php render_dashboard()
-// inside the Enterprise Setup Guide card. The exact string must be present
-// so admins can read what is and is not supported.
-$support_boundary = 'Enterprise BYO-key is supported for interactive imports from the admin screen and Gutenberg sidebar. WP-CLI Google-source imports, scheduled auto-sync in Enterprise mode, and multisite Enterprise setups are not supported yet.';
+// The guidance text lives in class-gdtg-admin.php render_dashboard()
+// inside the Direct OAuth Setup Guide card.
+$support_boundary = 'Direct OAuth (BYO-key) is supported for imports from the admin screen, Gutenberg sidebar, WP-CLI, and scheduled auto-sync.';
 
 $admin_source = file_get_contents( __DIR__ . '/../includes/class-gdtg-admin.php' );
-assert_true( false !== strpos( $admin_source, $support_boundary ), 'Admin Enterprise Setup Guide contains the support boundary paragraph' );
+assert_true( false !== strpos( $admin_source, $support_boundary ), 'Admin Direct OAuth Setup Guide contains the guidance paragraph' );
 
-// The string must appear inside the Enterprise Setup Guide card, not just
+// The string must appear inside the Setup Guide card, not just
 // anywhere in the file. We verify the substring order: opening card div
-// appears before the boundary text, closing div appears after.
+// appears before the boundary text.
 $card_open  = '<div class="gdtg-card gdtg-card--enterprise-guide" style="margin-top: 16px;">';
 $open_pos   = strpos( $admin_source, $card_open );
 $text_pos   = strpos( $admin_source, $support_boundary );
-assert_true( false !== $open_pos, 'Enterprise Setup Guide card div is present' );
-assert_true( false !== $text_pos, 'Support boundary string is present' );
-assert_true( $open_pos < $text_pos, 'Support boundary text appears inside the Enterprise Setup Guide card' );
+assert_true( false !== $open_pos, 'Direct OAuth Setup Guide card div is present' );
+assert_true( false !== $text_pos, 'Guidance string is present' );
+assert_true( $open_pos < $text_pos, 'Guidance text appears inside the Direct OAuth Setup Guide card' );
 
 // ----------------------------------------------------------------
 echo "\n==================================================\n";

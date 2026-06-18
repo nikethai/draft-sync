@@ -272,8 +272,6 @@ export default function GDTGSidebar() {
 	// ── Fetch picker config on mount ──
 	useEffect( () => {
 		if (
-			! settings.connection_mode ||
-			settings.connection_mode !== 'enterprise' ||
 			! settings.picker_config_url
 		) {
 			setPickerConfigLoading( false );
@@ -955,7 +953,7 @@ export default function GDTGSidebar() {
 		if ( ! token ) {
 			setPickerError(
 				__(
-					'Not connected to Google. Please reconnect your Enterprise account.',
+				'Not connected to Google. Please reconnect your account.',
 					'draftsync'
 				)
 			);
@@ -1135,8 +1133,7 @@ export default function GDTGSidebar() {
 								disabled={ isBusy }
 							/>
 							{ /* Phase 2: Google Picker button */ }
-							{ settings.connection_mode === 'enterprise' &&
-								! pickerConfigLoading &&
+							{ ! pickerConfigLoading &&
 								pickerConfig?.enabled && (
 									<div className="gdtg-picker-row">
 										<Button

@@ -190,23 +190,6 @@ class GDTG_Sync_Scheduler {
 			'details'   => array(),
 		);
 
-		// Enterprise mode is intentionally unsupported for cron-driven Google imports:
-		// tokens refresh interactively and a headless run cannot safely negotiate a
-		// fresh OAuth flow. Skip the run before issuing any WP_Query or HTTP call.
-		if ( 'enterprise' === get_option( 'gdtg_connection_mode', 'saas' ) ) {
-			$summary['skipped']             = 0;
-			$summary['enterprise_skipped']  = true;
-			if ( class_exists( 'GDTG_Sync_Log' ) ) {
-				GDTG_Sync_Log::record(
-					0,
-					'warning',
-					__( 'Scheduled sync skipped: Enterprise mode does not support cron-based Google imports yet.', 'draftsync' ),
-					array( 'step' => 'scheduler_enterprise_skipped' )
-				);
-			}
-			return $summary;
-		}
-
 		$query = new WP_Query(
 			array(
 				'post_type'      => 'any',

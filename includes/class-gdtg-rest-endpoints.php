@@ -2125,19 +2125,7 @@ class GDTG_REST_Endpoints {
 	 * @return WP_REST_Response
 	 */
 	public function handle_picker_config() {
-		$mode = get_option( 'gdtg_connection_mode', 'saas' );
-
-		if ( 'saas' === $mode ) {
-			return new WP_REST_Response(
-				array(
-					'enabled' => false,
-					'reason'  => 'saas_uses_bridge',
-				),
-				200
-			);
-		}
-
-		$client_id = get_option( 'gdtg_enterprise_client_id', '' );
+	$client_id = get_option( 'gdtg_enterprise_client_id', '' );
 
 		if ( empty( $client_id ) ) {
 			return new WP_REST_Response(
@@ -2179,22 +2167,13 @@ class GDTG_REST_Endpoints {
 	/**
 	 * Handle GET /gdtg/v1/auth/token?purpose=picker — return a picker-scoped access token.
 	 *
-	 * Enterprise-only. Throttled to 5 requests per minute per user via transient.
+	 * Throttled to 5 requests per minute per user via transient.
 	 * Never returns the refresh token.
 	 *
 	 * @param WP_REST_Request $request The current request.
 	 * @return WP_REST_Response
 	 */
 	public function handle_picker_token( $request ) {
-		$mode = get_option( 'gdtg_connection_mode', 'saas' );
-
-		if ( 'enterprise' !== $mode ) {
-			return new WP_REST_Response(
-				array( 'message' => __( 'Picker authentication is only available in Enterprise mode.', 'draftsync' ) ),
-				400
-			);
-		}
-
 		// Throttle: 5 requests per minute per user.
 		$user_id       = get_current_user_id();
 		$throttle_key  = 'gdtg_picker_token_throttle_' . $user_id;

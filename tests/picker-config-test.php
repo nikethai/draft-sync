@@ -212,7 +212,7 @@ function reset_mocks() {
 // Picker Config Tests
 // ═══════════════════════════════════════════════════════════════════
 
-suite( 'Picker config: SaaS mode returns enabled=false' );
+suite( 'Picker config: SaaS mode with all keys returns enabled=true' );
 
 reset_mocks();
 $mock_options['gdtg_connection_mode']        = 'saas';
@@ -230,9 +230,9 @@ $endpoints = new GDTG_REST_Endpoints( new GDTG_Loader() );
 $response  = $endpoints->handle_picker_config();
 $data      = $response->get_data();
 
-assert_true( ! $data['enabled'], 'SaaS mode: enabled is false' );
-assert_equals( 'saas_uses_bridge', $data['reason'], 'SaaS mode: reason is saas_uses_bridge' );
-assert_not_has_key( 'app_id', $data, 'SaaS mode: app_id not exposed' );
+assert_true( $data['enabled'], 'SaaS mode with keys: enabled is true' );
+assert_equals( '123456789', $data['app_id'], 'SaaS mode: app_id is correct' );
+assert_equals( 'AIzaTestKey', $data['developer_key'], 'SaaS mode: developer_key is correct' );
 
 suite( 'Picker config: Enterprise mode without keys returns enabled=false, reason=missing_keys' );
 
@@ -286,16 +286,19 @@ assert_true( in_array( 'https://www.googleapis.com/auth/drive.readonly', $data['
 // Picker Token Tests
 // ═══════════════════════════════════════════════════════════════════
 
-suite( 'Picker token: SaaS mode returns 400' );
+suite( 'Picker token: SaaS mode without valid token returns 401' );
 
 reset_mocks();
 $mock_options['gdtg_connection_mode'] = 'saas';
+$mock_options['gdtg_saas_access_token'] = '';
+$mock_options['gdtg_saas_token_expires'] = 0;
+$mock_options['gdtg_saas_refresh_token'] = '';
 
 $endpoints = new GDTG_REST_Endpoints( new GDTG_Loader() );
 $request   = new WP_REST_Request( array( 'purpose' => 'picker' ) );
 $response  = $endpoints->handle_picker_token( $request );
 
-assert_equals( 400, $response->get_status(), 'SaaS mode token: status is 400' );
+assert_equals( 401, $response->get_status(), 'SaaS mode without token: status is 401' );
 
 suite( 'Picker token: Enterprise mode without valid token returns 401' );
 

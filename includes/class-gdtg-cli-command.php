@@ -70,7 +70,6 @@ class GDTG_CLI_Command {
 	 */
 	public function import( $args, $assoc_args ) {
 		$this->ensure_user( $assoc_args );
-		$this->error_if_enterprise_cli_google_source();
 
 		$url_or_id = $args[0];
 		$post_id   = isset( $assoc_args['post_id'] ) ? absint( $assoc_args['post_id'] ) : 0;
@@ -370,7 +369,6 @@ class GDTG_CLI_Command {
 	 */
 	public function import_bulk( $args, $assoc_args ) {
 		$this->ensure_user( $assoc_args );
-		$this->error_if_enterprise_cli_google_source();
 		$file_path = $args[0];
 
 		if ( ! is_file( $file_path ) ) {
@@ -572,7 +570,6 @@ class GDTG_CLI_Command {
 	 */
 	public function sync( $args, $assoc_args ) {
 		$this->ensure_user( $assoc_args );
-		$this->error_if_enterprise_cli_google_source();
 		$post_id = absint( $args[0] );
 
 		$source_type = get_post_meta( $post_id, '_gdtg_source_type', true );
@@ -769,21 +766,6 @@ class GDTG_CLI_Command {
 
 		return new WP_Error( 'gdtg_invalid_input', 'Invalid Google Doc ID or URL.' );
 	}
-	/**
-	 * Fail fast in WP-CLI when the active connection mode is Enterprise
-	 * and the current command is going to touch a Google source.
-	 *
-	 * Local .docx imports do not need Google OAuth and intentionally skip
-	 * this check (called only from import(), import_bulk(), sync(),
-	 * sync_all() — not import_docx()).
-	 *
-	 * @return void
-	 */
-	private function error_if_enterprise_cli_google_source() {
-		if ( 'enterprise' === get_option( 'gdtg_connection_mode', 'saas' ) ) {
-			WP_CLI::error( 'Enterprise mode does not support WP-CLI Google-source imports yet. Use the Gutenberg sidebar or DraftSync admin screen for Enterprise Google imports.' );
-		}
-	}
 
 	/**
 	 * Synchronize all linked posts that have auto-sync enabled.
@@ -817,7 +799,6 @@ class GDTG_CLI_Command {
 	 */
 	public function sync_all( $args, $assoc_args ) {
 		$this->ensure_user( $assoc_args );
-		$this->error_if_enterprise_cli_google_source();
 		$limit   = isset( $assoc_args['limit'] ) ? absint( $assoc_args['limit'] ) : 0;
 		$force   = ! empty( $assoc_args['force'] );
 		$dry_run = ! empty( $assoc_args['dry-run'] ) || ! empty( $assoc_args['dry_run'] );

@@ -28,7 +28,6 @@ function gdtg_uninstall_option_keys() {
 		'gdtg_saas_token_expires',
 		'gdtg_saas_connected',
 		'gdtg_saas_bridge_base_url',
-		'gdtg_license_key',
 		'gdtg_default_category',
 		'gdtg_default_author',
 		'gdtg_optimize_images',

@@ -293,21 +293,16 @@ global $mock_wp_query_results;
 $mock_wp_query_results = array();
 $summary = $scheduler->run_scheduled_sync( 10, false, false );
 assert_equals( 0, $summary['checked'], 'No posts checked' );
-suite( 'run_scheduled_sync: Enterprise mode short-circuits with enterprise_skipped' );
+suite( 'run_scheduled_sync: Enterprise mode runs normally (no short-circuit)' );
 
 $mock_options['gdtg_connection_mode'] = 'enterprise';
 $mock_wp_query_results = array();
-// Seed a candidate post that would normally be picked up — the Enterprise guard
-// should run before WP_Query, so this is intentionally not added to mock_posts.
 $summary = $scheduler->run_scheduled_sync( 10, false, false );
-assert_equals( 0, $summary['checked'], 'Enterprise mode checks no posts' );
+assert_equals( 0, $summary['checked'], 'Enterprise mode checks no posts (empty result set)' );
 assert_equals( 0, $summary['synced'], 'Enterprise mode syncs no posts' );
-assert_equals( 0, $summary['skipped'], 'Enterprise mode reports skipped=0' );
-assert_true( true === $summary['enterprise_skipped'], 'Enterprise mode sets enterprise_skipped=true' );
+assert_false( isset( $summary['enterprise_skipped'] ), 'Enterprise mode does NOT set enterprise_skipped' );
 
 $mock_options['gdtg_connection_mode'] = 'saas';
-
-assert_equals( 0, $summary['synced'], 'No posts synced' );
 
 suite( 'run_scheduled_sync: skips post with local conflict' );
 

@@ -425,7 +425,7 @@ assert_equals( 'yes', $table_call['items'][0]['pending'], 'diagnose surfaces pen
 assert_equals( 'application/vnd.google-apps.document', $table_call['items'][0]['mime_type'], 'diagnose surfaces cached mime type' );
 assert_equals( '2026-06-02 12:00:00', $table_call['items'][0]['mime_cached'], 'diagnose surfaces mime cache timestamp' );
 
-suite( 'CLI Enterprise mode: wp draftsync import fails early' );
+suite( 'CLI Enterprise mode: import does NOT emit enterprise guard error' );
 
 WP_CLI::reset();
 $mock_options['gdtg_connection_mode'] = 'enterprise';
@@ -434,80 +434,72 @@ try {
 	$cli_enterprise->import( array( 'https://docs.google.com/document/d/ABC/edit' ), array( 'user' => 1 ) );
 } catch ( \RuntimeException $e ) {
 	// WP_CLI::error() throws to mimic exit.
+} catch ( Exception $e ) {
+	// Other errors are acceptable — we only assert no enterprise guard.
 }
-assert_equals( 1, count( WP_CLI::$errors ), 'Enterprise import emits one error' );
-assert_equals(
-	'Enterprise mode does not support WP-CLI Google-source imports yet. Use the Gutenberg sidebar or DraftSync admin screen for Enterprise Google imports.',
-	WP_CLI::$errors[0],
-	'Enterprise import error message matches contract'
-);
+$has_enterprise_error = false;
+foreach ( WP_CLI::$errors as $err ) {
+	if ( false !== strpos( $err, 'Enterprise mode does not support WP-CLI' ) ) {
+		$has_enterprise_error = true;
+		break;
+	}
+}
+assert_true( ! $has_enterprise_error, 'Enterprise mode import does NOT emit enterprise guard error' );
 
-suite( 'CLI Enterprise mode: wp draftsync import-bulk fails early' );
+suite( 'CLI Enterprise mode: import-bulk does NOT emit enterprise guard error' );
 
 WP_CLI::reset();
 try {
 	$cli_enterprise->import_bulk( array( '/nonexistent/bulk.csv' ), array( 'user' => 1 ) );
 } catch ( \RuntimeException $e ) {
-	// WP_CLI::error() throws to mimic exit.
+} catch ( Exception $e ) {
 }
-assert_equals( 1, count( WP_CLI::$errors ), 'Enterprise import-bulk emits one error' );
-assert_equals(
-	'Enterprise mode does not support WP-CLI Google-source imports yet. Use the Gutenberg sidebar or DraftSync admin screen for Enterprise Google imports.',
-	WP_CLI::$errors[0],
-	'Enterprise import-bulk error message matches contract'
-);
+$has_enterprise_error = false;
+foreach ( WP_CLI::$errors as $err ) {
+	if ( false !== strpos( $err, 'Enterprise mode does not support WP-CLI' ) ) {
+		$has_enterprise_error = true;
+		break;
+	}
+}
+assert_true( ! $has_enterprise_error, 'Enterprise mode import-bulk does NOT emit enterprise guard error' );
+
+suite( 'CLI Enterprise mode: sync does NOT emit enterprise guard error' );
 
 WP_CLI::reset();
 try {
 	$cli_enterprise->sync( array( '999' ), array( 'user' => 1 ) );
 } catch ( \RuntimeException $e ) {
-	// WP_CLI::error() throws to mimic exit.
+} catch ( Exception $e ) {
 }
-assert_equals( 1, count( WP_CLI::$errors ), 'Enterprise sync emits one error' );
-assert_equals(
-	'Enterprise mode does not support WP-CLI Google-source imports yet. Use the Gutenberg sidebar or DraftSync admin screen for Enterprise Google imports.',
-	WP_CLI::$errors[0],
-	'Enterprise sync error message matches contract'
-);
+$has_enterprise_error = false;
+foreach ( WP_CLI::$errors as $err ) {
+	if ( false !== strpos( $err, 'Enterprise mode does not support WP-CLI' ) ) {
+		$has_enterprise_error = true;
+		break;
+	}
+}
+assert_true( ! $has_enterprise_error, 'Enterprise mode sync does NOT emit enterprise guard error' );
 
-
-suite( 'CLI Enterprise mode: wp draftsync sync-all fails early' );
+suite( 'CLI Enterprise mode: sync-all does NOT emit enterprise guard error' );
 
 WP_CLI::reset();
 try {
 	$cli_enterprise->sync_all( array(), array( 'user' => 1 ) );
 } catch ( \RuntimeException $e ) {
-	// WP_CLI::error() throws to mimic exit.
-}
-assert_equals( 1, count( WP_CLI::$errors ), 'Enterprise sync-all emits one error' );
-assert_equals(
-	'Enterprise mode does not support WP-CLI Google-source imports yet. Use the Gutenberg sidebar or DraftSync admin screen for Enterprise Google imports.',
-	WP_CLI::$errors[0],
-	'Enterprise sync-all error message matches contract'
-);
-
-suite( 'CLI SaaS mode: import does not emit Enterprise early-fail' );
-
-WP_CLI::reset();
-$mock_options['gdtg_connection_mode'] = 'saas';
-$mock_wp_query_results = array();
-$mock_last_wp_query_args = array();
-// SaaS mode should not trip the Enterprise guard. We do not have a working
-// import path here, so we only assert the helper did not emit the early-fail
-// message — any later error from import_orchestrator is acceptable.
-try {
-	$cli_enterprise->import( array( 'https://docs.google.com/document/d/ABC/edit' ), array( 'user' => 1 ) );
-} catch ( Exception $e ) {
-	// Some paths may throw; the helper check has already passed.
+} catch ( \Exception $e ) {
+} catch ( \Error $e ) {
+	// Class loading errors are acceptable — we only assert no enterprise guard.
 }
 $has_enterprise_error = false;
 foreach ( WP_CLI::$errors as $err ) {
-	if ( false !== strpos( $err, 'Enterprise mode does not support WP-CLI Google-source imports yet' ) ) {
+	if ( false !== strpos( $err, 'Enterprise mode does not support WP-CLI' ) ) {
 		$has_enterprise_error = true;
 		break;
 	}
 }
-assert_true( ! $has_enterprise_error, 'SaaS mode import does not emit the Enterprise early-fail error' );
+assert_true( ! $has_enterprise_error, 'Enterprise mode sync-all does NOT emit enterprise guard error' );
+
+$mock_options['gdtg_connection_mode'] = 'saas';
 
 echo "\n==================================================\n";
 echo "CLI Command Test Suite PASSED successfully!\n";

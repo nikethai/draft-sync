@@ -50,8 +50,8 @@ class GDTG_Sideloader {
 			$optimize_images = get_option( 'gdtg_optimize_images', '1' );
 		}
 		$effective_url = $url;
-		// Bridge optimization is only available in SaaS mode — skip construction in Enterprise.
-		if ( '1' === $optimize_images && 'saas' === get_option( 'gdtg_connection_mode', 'saas' ) ) {
+		// Attempt bridge optimization (works in any mode with a configured bridge URL).
+		if ( '1' === $optimize_images ) {
 			$api       = new GDTG_API();
 			$opt_result = $api->optimize_image( $url );
 			if ( ! is_wp_error( $opt_result ) ) {

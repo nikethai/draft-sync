@@ -1043,7 +1043,7 @@
 } )();
 
 // ═══════════════════════════════════════════════════
-// Enterprise Setup Helpers
+// Direct OAuth Setup Helpers
 // ═══════════════════════════════════════════════════
 
 // ── Redirect URI copy button ──
@@ -1153,7 +1153,7 @@
 			// Detect desktop/native (installed) client.
 			if ( parsed.installed ) {
 				showStatus(
-					'This is a Desktop / Native application client. Enterprise mode requires a Web Application OAuth client. Create one in Google Cloud Console.',
+				'This is a Desktop / Native application client. Direct OAuth mode requires a Web Application OAuth client. Create one in Google Cloud Console.',
 					'error'
 				);
 				return;

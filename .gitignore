@@ -12,8 +12,10 @@ build/
 # Session / agent transient artifacts
 omp-session-*.html
 
-# Internal planning / docs / reports
+# Internal planning / reports
 plans/
 plan.md
-docs/
 reports/
+docs/journals/
+docs/researching_wordpress_docs_plugin/
+docs/contracts/

@@ -24,7 +24,7 @@ DraftSync imports Google Docs and .docx files directly into native WordPress Gut
 - Image sideloading to WordPress Media Library
 - Style overrides: heading demotion, min heading level, default alignment
 - SaaS OAuth bridge for zero-config Google authentication
-- Enterprise BYO-key mode with direct Google API access
+- Direct OAuth mode with your own Google API credentials
 - Inline formatting: bold, italic, underline, strikethrough, links, text color
 
 **External Services**
@@ -56,7 +56,7 @@ Deletion (uninstall) removes all plugin settings, OAuth tokens, connection confi
 
 = Can I use my own Google API credentials? =
 
-Yes. Switch to Enterprise mode in settings to use your own Google Cloud project credentials.
+Yes. Switch to Direct OAuth mode in settings to use your own Google Cloud project credentials.
 
 = Does this plugin support two-way sync? =
 
@@ -68,10 +68,10 @@ No. DraftSync performs one-way import/sync from Google Docs or .docx into WordPr
 Yes. The plugin ships with unminified JavaScript source in the `src/` directory, and you can build it yourself with Node.js 16+ and pnpm. See `package.json` for build commands.
 == Screenshots ==
 
-1. Admin settings screen with connection and import defaults.
-2. Gutenberg editor sidebar with .docx upload and style overrides.
-3. Imported Docs manager listing linked posts.
-4. Successfully imported document as native Gutenberg blocks.
+1. Import Defaults tab — configure default category, author, output mode, and import options.
+2. Connection tab — Google Account status, external service disclosure, and Direct OAuth setup guide.
+3. Help tab — inline user guideline with step-by-step instructions for every import mode.
+4. Gutenberg editor sidebar — import source picker, import options, and style overrides panel.
 
 == Changelog ==
 
