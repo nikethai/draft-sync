@@ -241,8 +241,10 @@ class GDTG_Admin {
 			'gdtg-admin-settings-js',
 			'GDTG_Admin',
 			[
-				'rest_url' => esc_url_raw( rest_url( 'gdtg/v1/' ) ),
-				'nonce'    => wp_create_nonce( 'wp_rest' ),
+				'rest_url'          => esc_url_raw( rest_url( 'gdtg/v1/' ) ),
+				'nonce'             => wp_create_nonce( 'wp_rest' ),
+				'picker_config_url' => esc_url_raw( rest_url( 'gdtg/v1/picker/config' ) ),
+				'picker_token_url'  => esc_url_raw( rest_url( 'gdtg/v1/auth/token' ) ),
 			]
 		);
 	}
@@ -902,6 +904,13 @@ class GDTG_Admin {
 								<div class="gdtg-form-row">
 									<label for="gdtg-import-doc-url"><?php esc_html_e( 'Google Doc URL', 'draftsync' ); ?></label>
 									<input type="text" id="gdtg-import-doc-url" class="regular-text" placeholder="https://docs.google.com/document/d/...">
+								</div>
+								<div id="gdtg-picker-row" class="gdtg-form-row" style="display:none;">
+									<button type="button" id="gdtg-admin-picker-btn" class="button button-secondary">
+										<span class="dashicons dashicons-search" style="margin-top:5px;"></span>
+										<?php esc_html_e( 'Choose from Google Drive', 'draftsync' ); ?>
+									</button>
+									<div id="gdtg-admin-picker-error" class="gdtg-picker-error" style="color:#d63638;margin-top:6px;display:none;"></div>
 								</div>
 							</div>
 

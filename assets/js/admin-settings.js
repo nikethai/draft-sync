@@ -1207,3 +1207,166 @@
 		clearStatus();
 	} );
 } )();
+
+// ── Google Picker (WP Admin) ──
+( function () {
+	const GDTG = window.GDTG_Admin;
+	if ( ! GDTG || ! GDTG.picker_config_url ) {
+		return;
+	}
+
+	const pickerRow   = document.getElementById( 'gdtg-picker-row' );
+	const pickerBtn   = document.getElementById( 'gdtg-admin-picker-btn' );
+	const pickerError = document.getElementById( 'gdtg-admin-picker-error' );
+	const urlInput    = document.getElementById( 'gdtg-import-doc-url' );
+
+	if ( ! pickerRow || ! pickerBtn || ! urlInput ) {
+		return;
+	}
+
+	let pickerConfig = null;
+	let gapiLoaded   = false;
+
+	function showError( msg ) {
+		if ( pickerError ) {
+			pickerError.textContent = msg;
+			pickerError.style.display = 'block';
+		}
+	}
+
+	function clearError() {
+		if ( pickerError ) {
+			pickerError.textContent = '';
+			pickerError.style.display = 'none';
+		}
+	}
+
+	// Fetch picker config on page load.
+	fetch( GDTG.picker_config_url, {
+		method: 'GET',
+		headers: { 'X-WP-Nonce': GDTG.nonce },
+	} )
+		.then( function ( r ) { return r.json(); } )
+		.then( function ( data ) {
+			if ( data && data.enabled ) {
+				pickerConfig = data;
+				pickerRow.style.display = '';
+			}
+		} )
+		.catch( function () {
+			// Silently ignore — button stays hidden.
+		} );
+
+	pickerBtn.addEventListener( 'click', async function () {
+		clearError();
+
+		// Fetch picker-scoped access token.
+		let token;
+		try {
+			const tokenResp = await fetch(
+				GDTG.picker_token_url + '?purpose=picker',
+				{
+					method: 'GET',
+					headers: { 'X-WP-Nonce': GDTG.nonce },
+				}
+			);
+			const body = await tokenResp.json();
+			if ( ! tokenResp.ok || ! body.token ) {
+				showError( body.message || 'Could not get an access token. Please reconnect your Google account.' );
+				return;
+			}
+			token = body.token;
+		} catch ( err ) {
+			showError( 'Could not authenticate with Google. Please reconnect your account.' );
+			return;
+		}
+
+		// Lazy-load Google API script.
+		if ( typeof window.gapi === 'undefined' ) {
+			try {
+				await new Promise( function ( resolve, reject ) {
+					var s = document.createElement( 'script' );
+					s.src = 'https://apis.google.com/js/api.js';
+					s.onload = resolve;
+					s.onerror = function () { reject( new Error( 'Failed to load Google API script.' ) ); };
+					document.head.appendChild( s );
+				} );
+			} catch ( err ) {
+				showError( 'Failed to load Google API script.' );
+				return;
+			}
+		}
+
+		// Load Picker library.
+		if ( ! gapiLoaded ) {
+			try {
+				await new Promise( function ( resolve, reject ) {
+					window.gapi.load( 'picker', {
+						callback: resolve,
+						onerror: function () { reject( new Error( 'Failed to load Google Picker library.' ) ); },
+					} );
+				} );
+				gapiLoaded = true;
+			} catch ( err ) {
+				showError( 'Failed to load Google Picker library.' );
+				return;
+			}
+		}
+
+		var appId         = pickerConfig.app_id;
+		var developerKey  = pickerConfig.developer_key;
+
+		if ( ! appId || ! developerKey ) {
+			showError( 'Picker is not configured. Set App ID and Developer Key in DraftSync settings.' );
+			return;
+		}
+
+		var view = new window.google.picker.DocsView()
+			.setIncludeFolders( false )
+			.setMimeTypes(
+				'application/vnd.google-apps.document,application/vnd.openxmlformats-officedocument.wordprocessingml.document'
+			);
+
+		var picker = new window.google.picker.PickerBuilder()
+			.enableFeature( window.google.picker.Feature.NAV_HIDDEN )
+			.setAppId( appId )
+			.setOAuthToken( token )
+			.setDeveloperKey( developerKey )
+			.addView( view )
+			.setCallback( function ( data ) {
+				if ( data.action === window.google.picker.Action.PICKED ) {
+					var doc = data.docs && data.docs[ 0 ];
+					if ( ! doc ) { return; }
+
+					var mimeType = doc.mimeType || '';
+					var isGDoc   = mimeType === 'application/vnd.google-apps.document';
+					var isDocx   = mimeType === 'application/vnd.openxmlformats-officedocument.wordprocessingml.document';
+
+					if ( ! isGDoc && ! isDocx ) {
+						showError( 'Unsupported file. Choose a Google Doc or .docx.' );
+						return;
+					}
+
+					var url = isGDoc && doc.url
+						? doc.url
+						: 'https://drive.google.com/file/d/' + doc.id + '/view';
+
+					urlInput.value = url;
+					clearError();
+
+					// Switch to URL tab if on file tab.
+					var urlTab = document.querySelector( '[data-import-mode="url"]' );
+					var fileSection = document.getElementById( 'gdtg-import-file-section' );
+					var urlSection  = document.getElementById( 'gdtg-import-url-section' );
+					if ( urlTab && fileSection && urlSection ) {
+						urlTab.classList.add( 'active' );
+						fileSection.style.display = 'none';
+						urlSection.style.display  = '';
+					}
+				}
+			} )
+			.build();
+
+		picker.setVisible( true );
+	} );
+} )();
