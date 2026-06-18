@@ -905,12 +905,13 @@ class GDTG_Admin {
 									<label for="gdtg-import-doc-url"><?php esc_html_e( 'Google Doc URL', 'draftsync' ); ?></label>
 									<input type="text" id="gdtg-import-doc-url" class="regular-text" placeholder="https://docs.google.com/document/d/...">
 								</div>
-								<div id="gdtg-picker-row" class="gdtg-form-row" style="display:none;">
-									<button type="button" id="gdtg-admin-picker-btn" class="button button-secondary">
+								<div id="gdtg-picker-row" class="gdtg-form-row">
+									<button type="button" id="gdtg-admin-picker-btn" class="button button-secondary" disabled>
 										<span class="dashicons dashicons-search" style="margin-top:5px;"></span>
 										<?php esc_html_e( 'Choose from Google Drive', 'draftsync' ); ?>
 									</button>
 									<div id="gdtg-admin-picker-error" class="gdtg-picker-error" style="color:#d63638;margin-top:6px;display:none;"></div>
+									<div id="gdtg-admin-picker-hint" class="gdtg-picker-hint" style="color:#646970;margin-top:6px;font-size:12px;display:none;"></div>
 								</div>
 							</div>
 

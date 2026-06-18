@@ -1241,6 +1241,15 @@
 		}
 	}
 
+	const pickerHint = document.getElementById( 'gdtg-admin-picker-hint' );
+
+	function showHint( msg ) {
+		if ( pickerHint ) {
+			pickerHint.textContent = msg;
+			pickerHint.style.display = 'block';
+		}
+	}
+
 	// Fetch picker config on page load.
 	fetch( GDTG.picker_config_url, {
 		method: 'GET',
@@ -1250,11 +1259,15 @@
 		.then( function ( data ) {
 			if ( data && data.enabled ) {
 				pickerConfig = data;
-				pickerRow.style.display = '';
+				pickerBtn.removeAttribute( 'disabled' );
+			} else {
+				showHint(
+					'To enable Google Drive browsing, configure your Google Cloud credentials in Connection settings: OAuth Client ID, Picker App ID, and Picker Developer Key.'
+				);
 			}
 		} )
 		.catch( function () {
-			// Silently ignore — button stays hidden.
+			showHint( 'Could not load Google Picker configuration.' );
 		} );
 
 	pickerBtn.addEventListener( 'click', async function () {
