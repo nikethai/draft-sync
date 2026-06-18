@@ -460,8 +460,9 @@ class GDTG_Secret_Store {
 DraftSync uses the **Google Picker API** instead of building a custom Drive file tree. The picker launches from the Gutenberg sidebar next to the existing URL input.
 
 **Picker config endpoint:** `GET /gdtg/v1/picker/config`
-- Without picker keys: returns `{enabled: false, reason: "missing_keys"}`.
+- Without picker keys (App ID + Developer Key): returns `{enabled: false, reason: "missing_keys"}`.
 - With `gdtg_picker_app_id` + `gdtg_picker_developer_key`: returns `{enabled: true, app_id, developer_key, scopes: ["docs.readonly", "drive.readonly"]}`.
+  Requires an active Google connection (SaaS or Direct OAuth) to obtain an access token.
 
 **Picker token endpoint:** `GET /gdtg/v1/auth/token?purpose=picker`
 - Returns the current access token for Picker API authentication.

@@ -212,7 +212,7 @@ class GDTG_Admin {
 				'post_source_type'  => get_post_meta( get_the_ID(), '_gdtg_source_type', true ) ?: '',
 				'post_auto_sync'    => get_post_meta( get_the_ID(), '_gdtg_auto_sync', true ) ?: '0',
 				'connection_mode'       => sanitize_text_field( get_option( 'gdtg_connection_mode', 'saas' ) ),
-				'drive_browser_enabled' => ! empty( get_option( 'gdtg_enterprise_client_id', '' ) ),
+				'drive_browser_enabled' => ! empty( get_option( 'gdtg_picker_app_id', '' ) ) && ! empty( get_option( 'gdtg_picker_developer_key', '' ) ),
 				'picker_config_url'     => esc_url_raw( rest_url( 'gdtg/v1/picker/config' ) ),
 				'picker_token_url'      => esc_url_raw( rest_url( 'gdtg/v1/auth/token' ) ),
 			]

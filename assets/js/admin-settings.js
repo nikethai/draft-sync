@@ -1262,7 +1262,7 @@
 				pickerBtn.removeAttribute( 'disabled' );
 			} else {
 				showHint(
-					'To enable Google Drive browsing, configure your Google Cloud credentials in Connection settings: OAuth Client ID, Picker App ID, and Picker Developer Key.'
+					'To enable Google Drive browsing, configure your Picker App ID and Developer Key in Connection settings.'
 				);
 			}
 		} )

@@ -234,24 +234,22 @@ assert_true( $data['enabled'], 'SaaS mode with keys: enabled is true' );
 assert_equals( '123456789', $data['app_id'], 'SaaS mode: app_id is correct' );
 assert_equals( 'AIzaTestKey', $data['developer_key'], 'SaaS mode: developer_key is correct' );
 
-suite( 'Picker config: Enterprise mode without keys returns enabled=false, reason=missing_keys' );
+suite( 'Picker config: without picker keys returns enabled=false, reason=missing_keys' );
 
 reset_mocks();
-$mock_options['gdtg_connection_mode']      = 'enterprise';
-$mock_options['gdtg_enterprise_client_id'] = ''; // No client ID.
+$mock_options['gdtg_connection_mode'] = 'enterprise';
 
 $endpoints = new GDTG_REST_Endpoints( new GDTG_Loader() );
 $response  = $endpoints->handle_picker_config();
 $data      = $response->get_data();
 
-assert_true( ! $data['enabled'], 'Enterprise without client ID: enabled is false' );
-assert_equals( 'missing_keys', $data['reason'], 'Enterprise without client ID: reason is missing_keys' );
+assert_true( ! $data['enabled'], 'Without picker keys: enabled is false' );
+assert_equals( 'missing_keys', $data['reason'], 'Without picker keys: reason is missing_keys' );
 
-suite( 'Picker config: Enterprise mode with client ID but missing picker keys' );
+suite( 'Picker config: missing app_id returns enabled=false' );
 
 reset_mocks();
 $mock_options['gdtg_connection_mode']      = 'enterprise';
-$mock_options['gdtg_enterprise_client_id'] = 'test-client-id.apps.googleusercontent.com';
 $mock_options['gdtg_picker_app_id']        = ''; // Empty.
 $mock_options['gdtg_picker_developer_key'] = 'AIzaTestKey';
 
@@ -259,14 +257,12 @@ $endpoints = new GDTG_REST_Endpoints( new GDTG_Loader() );
 $response  = $endpoints->handle_picker_config();
 $data      = $response->get_data();
 
-assert_true( ! $data['enabled'], 'Enterprise with missing app_id: enabled is false' );
-assert_equals( 'missing_keys', $data['reason'], 'Enterprise with missing app_id: reason is missing_keys' );
+assert_true( ! $data['enabled'], 'Missing app_id: enabled is false' );
+assert_equals( 'missing_keys', $data['reason'], 'Missing app_id: reason is missing_keys' );
 
-suite( 'Picker config: Enterprise mode with all keys returns enabled=true' );
+suite( 'Picker config: with all picker keys returns enabled=true' );
 
 reset_mocks();
-$mock_options['gdtg_connection_mode']      = 'enterprise';
-$mock_options['gdtg_enterprise_client_id'] = 'test-client-id.apps.googleusercontent.com';
 $mock_options['gdtg_picker_app_id']        = '123456789';
 $mock_options['gdtg_picker_developer_key'] = 'AIzaTestKey';
 
@@ -274,13 +270,13 @@ $endpoints = new GDTG_REST_Endpoints( new GDTG_Loader() );
 $response  = $endpoints->handle_picker_config();
 $data      = $response->get_data();
 
-assert_true( $data['enabled'], 'Enterprise with all keys: enabled is true' );
-assert_equals( '123456789', $data['app_id'], 'Enterprise: app_id is correct' );
-assert_equals( 'AIzaTestKey', $data['developer_key'], 'Enterprise: developer_key is correct' );
-assert_true( is_array( $data['scopes'] ), 'Enterprise: scopes is an array' );
-assert_true( count( $data['scopes'] ) >= 2, 'Enterprise: at least 2 scopes returned' );
-assert_true( in_array( 'https://www.googleapis.com/auth/documents.readonly', $data['scopes'], true ), 'Enterprise: documents.readonly scope present' );
-assert_true( in_array( 'https://www.googleapis.com/auth/drive.readonly', $data['scopes'], true ), 'Enterprise: drive.readonly scope present' );
+assert_true( $data['enabled'], 'With all picker keys: enabled is true' );
+assert_equals( '123456789', $data['app_id'], 'app_id is correct' );
+assert_equals( 'AIzaTestKey', $data['developer_key'], 'developer_key is correct' );
+assert_true( is_array( $data['scopes'] ), 'scopes is an array' );
+assert_true( count( $data['scopes'] ) >= 2, 'at least 2 scopes returned' );
+assert_true( in_array( 'https://www.googleapis.com/auth/documents.readonly', $data['scopes'], true ), 'documents.readonly scope present' );
+assert_true( in_array( 'https://www.googleapis.com/auth/drive.readonly', $data['scopes'], true ), 'drive.readonly scope present' );
 
 // ═══════════════════════════════════════════════════════════════════
 // Picker Token Tests

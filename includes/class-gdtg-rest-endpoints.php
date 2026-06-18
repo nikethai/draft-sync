@@ -2125,20 +2125,9 @@ class GDTG_REST_Endpoints {
 	 * @return WP_REST_Response
 	 */
 	public function handle_picker_config() {
-	$client_id = get_option( 'gdtg_enterprise_client_id', '' );
-
-		if ( empty( $client_id ) ) {
-			return new WP_REST_Response(
-				array(
-					'enabled' => false,
-					'reason'  => 'missing_keys',
-				),
-				200
-			);
-		}
-
 		$app_id        = sanitize_text_field( get_option( 'gdtg_picker_app_id', '' ) );
 		$developer_key = sanitize_text_field( get_option( 'gdtg_picker_developer_key', '' ) );
+
 
 		if ( empty( $app_id ) || empty( $developer_key ) ) {
 			return new WP_REST_Response(
@@ -2194,7 +2183,7 @@ class GDTG_REST_Endpoints {
 
 		if ( empty( $token ) ) {
 			return new WP_REST_Response(
-				array( 'message' => __( 'Not connected to Google. Please reconnect your Enterprise account.', 'draftsync' ) ),
+				array( 'message' => __( 'Not connected to Google. Please reconnect your account.', 'draftsync' ) ),
 				401
 			);
 		}
