@@ -907,7 +907,7 @@ class GDTG_Admin {
 								</div>
 								<div id="gdtg-picker-row" class="gdtg-form-row">
 									<button type="button" id="gdtg-admin-picker-btn" class="button button-secondary" disabled>
-										<span class="dashicons dashicons-search" style="margin-top:5px;"></span>
+										<span class="dashicons dashicons-search"></span>
 										<?php esc_html_e( 'Choose from Google Drive', 'draftsync' ); ?>
 									</button>
 									<div id="gdtg-admin-picker-error" class="gdtg-picker-error" style="color:#d63638;margin-top:6px;display:none;"></div>

@@ -564,9 +564,16 @@
 	margin-top: 12px;
 }
 
+#gdtg-admin-picker-btn {
+	display: inline-flex;
+	align-items: center;
+	gap: 4px;
+}
+
 #gdtg-admin-picker-btn .dashicons {
-	margin-right: 4px;
-	vertical-align: text-bottom;
+	font-size: 18px;
+	height: 18px;
+	line-height: 18px;
 }
 
 
